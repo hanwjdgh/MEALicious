@@ -2,9 +2,6 @@
 <resources>
 
     <string-array name="example_one">
-        <item>구름 위에서</item>
-        <item>함께하는</item>
-        <item>식사</item>
-
+        <item>화면을 터치해 주세요</item>
     </string-array>
 </resources>
