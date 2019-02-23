@@ -14,17 +14,41 @@
         android:scaleType="centerCrop"
         android:src="@drawable/main_animation" />
 
+    <Button
+        android:layout_alignRight="@id/main_image"
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="배치도" />
+    <Button
+        android:layout_toLeftOf="@+id/button1"
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="일본어" />
+    <Button
+        android:layout_toLeftOf="@+id/button2"
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="중국어" />
+    <Button
+        android:layout_toLeftOf="@+id/button3"
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="한국어" />
+
     <com.tomer.fadingtextview.FadingTextView
+        android:layout_alignBottom="@id/main_image"
         android:id="@+id/fading_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_centerHorizontal="true"
-        android:textColor="#F44336"
+        android:textColor="#FFFFFF"
         android:textSize="40sp"
+        android:paddingBottom="10dp"
         app:texts="@array/example_one"
-        app:timeout="1000" />
-
-
+        app:timeout="2000" />
 
 </RelativeLayout>
