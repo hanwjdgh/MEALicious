@@ -12,22 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/main_image" />
+        android:src="@drawable/main_animation" />
 
     <com.tomer.fadingtextview.FadingTextView
-        android:layout_alignBottom="@id/main_image"
-        android:layout_alignLeft="@id/main_image"
-        android:layout_alignRight="@id/main_image"
-        android:layout_alignTop="@id/main_image"
-        android:gravity="center"
         android:id="@+id/fading_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:texts="@array/example_one"
-        app:timeout="1000"
+
+        android:layout_centerHorizontal="true"
+        android:textColor="#F44336"
         android:textSize="40sp"
-        android:layout_centerInParent="true"
-        android:textColor="#F44336"/>
+        app:texts="@array/example_one"
+        app:timeout="1000" />
 
 
 

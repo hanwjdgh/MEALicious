@@ -15,7 +15,7 @@ import com.example.meal.R;
 public class ServiceActivity extends AppCompatActivity {
     private Context mContext;
 
-    private ViewPager mViewPager;
+    public static ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
