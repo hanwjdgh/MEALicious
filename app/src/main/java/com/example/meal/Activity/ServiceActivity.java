@@ -1,6 +1,7 @@
 package com.example.meal.Activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -59,6 +60,8 @@ public class ServiceActivity extends AppCompatActivity {
         View tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab, null);
         TextView txt_name = (TextView) tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
+        txt_name.setTextSize(27);
+        txt_name.setTextColor(Color.WHITE);
         return tabView;
     }
 

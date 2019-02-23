@@ -12,13 +12,20 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabMaxWidth="0dp"
-        app:tabTextColor="#000000"
+        app:tabTextColor="#FCF7F7"
+        app:tabBackground="@color/colorAccent"
         app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabIndicatorColor="@color/colorPrimary"/>
+        app:tabIndicatorColor="@color/colorPrimaryDark"
+        app:tabIndicatorHeight="3dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#81000000"/>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_content"
