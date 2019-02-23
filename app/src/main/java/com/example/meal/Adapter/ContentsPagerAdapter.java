@@ -42,4 +42,10 @@ public class ContentsPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return mPageCount;
     }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
 }
+
