@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="example_one">
+        <item>구름 위에서</item>
+        <item>함께하는</item>
+        <item>식사</item>
+
+    </string-array>
+</resources>
