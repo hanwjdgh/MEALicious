@@ -1,6 +1,7 @@
 package com.example.meal.Activity;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView iv = findViewById(R.id.main_image);
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) iv.getDrawable();
+        if(animationDrawable!=null)
+            animationDrawable.start();
 
         iv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
