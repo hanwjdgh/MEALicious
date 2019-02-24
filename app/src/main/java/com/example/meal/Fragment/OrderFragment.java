@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.meal.Adapter.RecyclerAdapter;
@@ -41,6 +43,7 @@ public class OrderFragment extends Fragment {
     ImageView imageView;
     InputMethodManager imm;
     RecyclerView recyclerView;
+    RadioGroup radioGroup;
 
     final int ITEM_SIZE = 5;
 
@@ -56,6 +59,8 @@ public class OrderFragment extends Fragment {
         autoCompleteTextView1 = view.findViewById(R.id.search);
         autoCompleteTextView2 = view.findViewById(R.id.search2);
         recyclerView = view.findViewById(R.id.main_rv);
+        radioGroup = view.findViewById(R.id.radio);
+
         appbarLayout.bringToFront();
 
         if (appbarLayout.getLayoutParams() != null) {
@@ -105,6 +110,22 @@ public class OrderFragment extends Fragment {
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "DatePicker2");
             }
         });
+
+        RadioGroup.OnCheckedChangeListener rl = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.option1){
+                    dateView2.setText(localDate2.format(DateTimeFormatter.ISO_LOCAL_DATE));
+                    dateView2.setClickable(true);
+                }
+                else {
+                    dateView2.setText("");
+                    dateView2.setClickable(false);
+                }
+            }
+        };
+        radioGroup.setOnCheckedChangeListener(rl);
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
