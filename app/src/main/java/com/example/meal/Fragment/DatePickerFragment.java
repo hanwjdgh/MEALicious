@@ -23,18 +23,18 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         LocalDate date = LocalDate.now();
         int year = date.getYear();
         int month = date.getMonthValue() - 1;
-        int day = date.getDayOfMonth();
+        int day = date.getDayOfMonth()-1;
 
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        LocalDate localDate = LocalDate.of(year, month+1, dayOfMonth);
-        if(getTag().equals("DatePicker"))
+        LocalDate localDate = LocalDate.of(year, month + 1, dayOfMonth);
+        if (getTag().equals("DatePicker")) {
             ((TextView) getActivity().findViewById(R.id.date_view)).setText(localDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        else
+        } else {
             ((TextView) getActivity().findViewById(R.id.date_view2)).setText(localDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-
+        }
     }
 }

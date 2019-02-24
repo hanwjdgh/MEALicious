@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimaryDark"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -72,7 +72,7 @@
                 android:id="@+id/date_view2"
                 android:layout_width="200dp"
                 android:layout_height="49dp"
-                android:layout_marginLeft="730dp"
+                android:layout_marginLeft="720dp"
                 android:layout_marginTop="280dp"
                 android:clickable="true"
                 android:text="Date"
