@@ -128,9 +128,10 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
         app:layout_anchorGravity="bottom|end"
         app:layout_anchor="@id/collapsingToolbarLayout01"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/search_icon" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rv"
