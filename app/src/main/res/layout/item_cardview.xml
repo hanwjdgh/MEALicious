@@ -12,25 +12,98 @@
         android:layout_margin="5dp"
         card_view:cardCornerRadius="5dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/relat"
             android:orientation="vertical">
 
             <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="210dp"
-                />
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:layout_below="@+id/image"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/image1"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
             <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="test" />
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:text="오후 2:45 - 오후 4:35"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="70dp"
+                android:text="ICN - KOJ, 대한항공"
+                android:textSize="20dp" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="직항"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/go1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/go"
+                android:layout_marginTop="70dp"
+                android:text="1시간 50분"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="130dp"
+                android:text="오후 5:30 - 오후 7:35"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="180dp"
+                android:text="KOJ - ICN, 대한항공"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/go2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="130dp"
+                android:text="직항"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/go3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/go2"
+                android:layout_marginTop="180dp"
+                android:text="2시간 5분"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

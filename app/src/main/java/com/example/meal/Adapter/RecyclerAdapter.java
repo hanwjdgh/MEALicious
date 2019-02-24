@@ -32,7 +32,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview, null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview, null, false);
+        v.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ViewHolder(v);
     }
 
@@ -42,7 +43,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final Item item = items.get(position);
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         holder.image.setBackground(drawable);
-        holder.title.setText(item.getTitle());
+        holder.image1.setBackground(drawable);
+        //holder.title.setText(item.getTitle());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,14 +59,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
+        ImageView image, image1;
         TextView title;
         CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.image);
-            title = (TextView) itemView.findViewById(R.id.title);
+            image1 = (ImageView) itemView.findViewById(R.id.image1);
+            //title = (TextView) itemView.findViewById(R.id.title);
             cardview = (CardView) itemView.findViewById(R.id.cardview);
         }
     }
