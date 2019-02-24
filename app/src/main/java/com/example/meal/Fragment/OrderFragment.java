@@ -115,8 +115,11 @@ public class OrderFragment extends Fragment {
                 else {
                     String str = autoCompleteTextView1.getText().toString();
                     String str2 = autoCompleteTextView2.getText().toString();
+                    String str3 = dateView.getText().toString();
+                    String str4 = dateView2.getText().toString();
+
                     if(str.length() > 0 && str2.length() > 0)
-                        textView.setText(str+" - "+str2+"  "+localDate1.getMonthValue()+"월"+localDate1.getDayOfMonth()+"일"+ " ~ "+localDate2.getMonthValue()+"월"+localDate2.getDayOfMonth()+"일");
+                        textView.setText(str+" - "+str2+"   "+str3.substring(5,7)+"월 "+str3.substring(8,10)+"일"+" ~ "+str4.substring(5,7)+"월 "+str4.substring(8,10)+"일");
                     appbarLayout.setExpanded(false);
 
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
