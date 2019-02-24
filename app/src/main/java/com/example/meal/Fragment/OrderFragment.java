@@ -83,7 +83,7 @@ public class OrderFragment extends Fragment {
 
         AndroidThreeTen.init(getContext());
         LocalDate date = LocalDate.now();
-        int day1 = date.getDayOfMonth()-1;
+        int day1 = date.getDayOfMonth();
         final LocalDate localDate1 = LocalDate.of(date.getYear(), date.getMonthValue(), day1);
 
         dateView.setText(localDate1.format(DateTimeFormatter.ISO_LOCAL_DATE));
@@ -95,7 +95,7 @@ public class OrderFragment extends Fragment {
             }
         });
 
-        int day2 = date.getDayOfMonth()+2;
+        int day2 = date.getDayOfMonth()+3;
         final LocalDate localDate2 = LocalDate.of(date.getYear(), date.getMonthValue(), day2);
         dateView2.setText(localDate2.format(DateTimeFormatter.ISO_LOCAL_DATE));
         dateView2.setOnClickListener(new View.OnClickListener() {
