@@ -127,11 +127,11 @@ public class OrderFragment extends Fragment {
                     recyclerView.setLayoutManager(layoutManager);
                     List<Item> items = new ArrayList<>();
                     Item[] item = new Item[ITEM_SIZE];
-                    item[0] = new Item(R.drawable.airport, "#1");
-                    item[1] = new Item(R.drawable.airport, "#2");
-                    item[2] = new Item(R.drawable.airport, "#3");
-                    item[3] = new Item(R.drawable.airport, "#4");
-                    item[4] = new Item(R.drawable.airport, "#5");
+                    item[0] = new Item(R.drawable.airport, R.drawable.airport,"#1");
+                    item[1] = new Item(R.drawable.airport, R.drawable.airport,"#2");
+                    item[2] = new Item(R.drawable.airport, R.drawable.airport,"#3");
+                    item[3] = new Item(R.drawable.airport, R.drawable.airport,"#4");
+                    item[4] = new Item(R.drawable.airport, R.drawable.airport,"#5");
 
                     for (int i = 0; i < ITEM_SIZE; i++) {
                         items.add(item[i]);
