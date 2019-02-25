@@ -21,6 +21,7 @@
 
         <activity android:name=".Activity.ServiceActivity"/>
         <activity android:name=".Activity.TodayMenuActivity"/>
+        <activity android:name=".Activity.MenuDetailActivity"/>
     </application>
 
 </manifest>
