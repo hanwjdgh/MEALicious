@@ -19,7 +19,7 @@ public class ServiceFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServiceActivity.mViewPager.setCurrentItem(1);
+                ServiceActivity.mViewPager.setCurrentItem(2);
             }
         });
         return view;
