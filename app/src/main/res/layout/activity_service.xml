@@ -8,6 +8,13 @@
     tools:context=".Activity.ServiceActivity"
     android:orientation="vertical">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorAccent"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/layout_tab"
@@ -21,10 +28,6 @@
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabIndicatorColor="@color/colorPrimaryDark"
         app:tabIndicatorHeight="3dp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#81000000"/>
 
 
     <android.support.v4.view.ViewPager
