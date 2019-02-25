@@ -17,7 +17,7 @@ public class ServiceActivity extends AppCompatActivity {
     private Context mContext;
 
     public static ViewPager mViewPager;
-
+    public static  ContentsPagerAdapter mContentPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,8 @@ public class ServiceActivity extends AppCompatActivity {
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("뉴스")));
 
         mViewPager = findViewById(R.id.pager_content);
-        ContentsPagerAdapter mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
+        mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mContentPagerAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
@@ -41,6 +42,8 @@ public class ServiceActivity extends AppCompatActivity {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition()==0)
+                    mContentPagerAdapter.notifyDataSetChanged();
                 mViewPager.setCurrentItem(tab.getPosition());
             }
 
