@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.meal.Fragment.EventFragment;
 import com.example.meal.Fragment.NewsFragment;
+import com.example.meal.Fragment.MenuFragment;
 import com.example.meal.Fragment.OrderFragment;
 import com.example.meal.Fragment.ServiceFragment;
 
@@ -24,12 +25,15 @@ public class ContentsPagerAdapter extends FragmentStatePagerAdapter {
                 ServiceFragment serviceFragment = new ServiceFragment();
                 return serviceFragment;
             case 1:
+                MenuFragment menuFragment = new MenuFragment();
+                return menuFragment;
+            case 2:
                 OrderFragment orderFragment = new OrderFragment();
                 return orderFragment;
-            case 2:
+            case 3:
                 EventFragment eventFragment = new EventFragment();
                 return eventFragment;
-            case 3:
+            case 4:
                 NewsFragment newsFragment = new NewsFragment();
                 return newsFragment;
             default:

@@ -1,6 +1,7 @@
 package com.example.meal.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.meal.Activity.ServiceActivity;
+import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Item;
 import com.example.meal.R;
 
@@ -48,7 +51,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, TodayMenuActivity.class);
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                //Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }
