@@ -97,8 +97,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        int day2 = date.getDayOfMonth()+2;
-        final LocalDate localDate2 = LocalDate.of(date.getYear(), date.getMonthValue(), day2);
+        final LocalDate localDate2 = date.plusDays(3);
         dateView2.setText(localDate2.format(DateTimeFormatter.ISO_LOCAL_DATE));
         dateView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,8 +137,12 @@ public class MenuFragment extends Fragment {
 
                     appbarLayout.setExpanded(false);
                     if(str.length() > 0 && str2.length() > 0) {
-                        textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
+                        if(str4.equals("")){
+                            textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일");
 
+                        }else {
+                            textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
+                        }
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                         recyclerView.setHasFixedSize(true);
