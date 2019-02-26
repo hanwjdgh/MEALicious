@@ -1,5 +1,6 @@
 package com.example.meal.Activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
@@ -7,8 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.R;
@@ -22,6 +28,8 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
         mContext = getApplicationContext();
         TabLayout mTaplayout = findViewById(R.id.layout_tab);
@@ -68,7 +76,42 @@ public class ServiceActivity extends AppCompatActivity {
         txt_name.setTextColor(Color.WHITE);
         return tabView;
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.actionbar_actions, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+                return true;
+            case R.id.eng:
+                Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.kor:
+                Toast.makeText(this, "한국어", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.cin:
+                Toast.makeText(this, "중국어", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.jap:
+                Toast.makeText(this, "일어", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.map:
+                Dialog dialog = new Dialog(ServiceActivity.this);
+                dialog.setContentView(R.layout.location_map);
+                dialog.show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public void onBackPressed(){
         int curItem = mViewPager.getCurrentItem();
