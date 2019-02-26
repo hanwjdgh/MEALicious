@@ -49,12 +49,7 @@ public class OrderFragment extends Fragment {
         lookup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WalletFragment walletFragment = new WalletFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.background, walletFragment);
-                fragmentTransaction.commit();
+
             }
         });
         return view;

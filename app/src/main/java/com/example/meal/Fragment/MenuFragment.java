@@ -97,7 +97,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        int day2 = date.getDayOfMonth()+3;
+        int day2 = date.getDayOfMonth()+2;
         final LocalDate localDate2 = LocalDate.of(date.getYear(), date.getMonthValue(), day2);
         dateView2.setText(localDate2.format(DateTimeFormatter.ISO_LOCAL_DATE));
         dateView2.setOnClickListener(new View.OnClickListener() {
