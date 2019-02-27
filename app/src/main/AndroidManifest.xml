@@ -23,6 +23,7 @@
             android:parentActivityName=".Activity.MainActivity"/>
         <activity android:name=".Activity.TodayMenuActivity"/>
         <activity android:name=".Activity.MenuDetailActivity"/>
+        <activity android:name=".Activity.WalletActivity"/>
     </application>
 
 </manifest>
