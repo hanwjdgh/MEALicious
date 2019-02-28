@@ -12,7 +12,6 @@ public class MenuDetailActivity extends ServiceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
         MenuDetailFragment menuDetailFragment = new MenuDetailFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, menuDetailFragment).commit();

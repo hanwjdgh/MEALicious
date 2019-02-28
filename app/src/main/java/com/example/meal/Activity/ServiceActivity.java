@@ -2,7 +2,9 @@ package com.example.meal.Activity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,16 +24,19 @@ public class ServiceActivity extends AppCompatActivity {
 
     public static ViewPager mViewPager;
     public static  ContentsPagerAdapter mContentPagerAdapter;
+    TabLayout mTaplayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
         getSupportActionBar().setElevation(0);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
         mContext = getApplicationContext();
-        TabLayout mTaplayout = findViewById(R.id.layout_tab);
+        mTaplayout = findViewById(R.id.layout_tab);
 
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("서비스")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("오늘의 메뉴")));
@@ -49,8 +54,6 @@ public class ServiceActivity extends AppCompatActivity {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0)
-                    mContentPagerAdapter.notifyDataSetChanged();
                 mViewPager.setCurrentItem(tab.getPosition());
             }
 
@@ -86,7 +89,9 @@ public class ServiceActivity extends AppCompatActivity {
         item.setChecked(true);
         switch (item.getItemId()){
             case android.R.id.home:
-                onBackPressed();
+                Intent homeIntent = new Intent(this, MainActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
                 return true;
             case R.id.lag:
                 return true;
@@ -110,6 +115,12 @@ public class ServiceActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+        //액티비티 애니메이션 x
     }
 
     @Override
