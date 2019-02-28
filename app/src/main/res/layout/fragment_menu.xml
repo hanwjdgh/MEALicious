@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -26,76 +27,84 @@
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
                 android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/search"
                 app:layout_collapseMode="parallax" />
 
-            <AutoCompleteTextView
-                android:id="@+id/search"
-                android:layout_width="600dp"
+            <RadioGroup
+                android:id="@+id/radio"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
-                android:layout_marginTop="110dp"
+
+                android:layout_marginTop="200dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:textSize="30dp" />
+
+                <RadioButton
+                    android:id="@+id/option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+
+                    android:layout_weight="1"
+                    android:textSize="30dp" />
+            </RadioGroup>
+
+            <AutoCompleteTextView
+                android:id="@+id/search"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="370dp"
+                android:layout_marginTop="277dp"
+                android:background="@android:color/transparent"
                 android:completionThreshold="1"
-                android:textColor="#000000"
+                android:gravity="center"
                 android:text="a"
-                android:textSize="30sp" />
+                android:textColor="#000000"
+                android:textSize="25sp" />
 
             <AutoCompleteTextView
                 android:id="@+id/search2"
-                android:layout_width="600dp"
+                android:layout_width="192dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginLeft="766dp"
+                android:layout_marginTop="277dp"
+                android:background="@android:color/transparent"
                 android:completionThreshold="1"
+                android:gravity="center"
                 android:text="b"
                 android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/date_view"
-                android:layout_width="200dp"
+                android:layout_width="136dp"
                 android:layout_height="49dp"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="350dp"
+                android:layout_marginLeft="405dp"
+                android:layout_marginTop="365dp"
                 android:clickable="true"
                 android:text="Date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <TextView
                 android:id="@+id/date_view2"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="49dp"
-                android:layout_marginLeft="720dp"
-                android:layout_marginTop="350dp"
+                android:layout_marginLeft="803dp"
+                android:layout_marginTop="365dp"
                 android:clickable="true"
                 android:text="Date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-            <RadioGroup
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="450dp"
-                android:layout_marginLeft="150dp"
-                android:orientation="horizontal"
-                android:id="@+id/radio">
-                <RadioButton
-                    android:id="@+id/option1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="30dp"
-                    android:text="왕복" />
-
-                <RadioButton
-                    android:id="@+id/option2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="30dp"
-                    android:text="편도" />
-            </RadioGroup>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -107,10 +116,9 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="검색"
-                    android:textSize="30sp"
+                    android:ems="10"
                     android:textColor="@android:color/white"
-                    android:ems="10"/>
+                    android:textSize="30sp" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -122,17 +130,28 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        app:layout_anchorGravity="bottom|end"
+        android:layout_gravity="center"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="80dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#e9823e"
+        android:fitsSystemWindows="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/search_icon"
+        app:borderWidth="0dp"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
         app:layout_anchor="@id/collapsingToolbarLayout01"
-        android:src="@drawable/search_icon" />
+        app:layout_anchorGravity="bottom|end"
+        app:maxImageSize="80dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rv"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:nestedScrollingEnabled="false"
-        android:scrollbars="vertical"/>
+
+        android:scrollbars="vertical" />
 
 </android.support.design.widget.CoordinatorLayout>
