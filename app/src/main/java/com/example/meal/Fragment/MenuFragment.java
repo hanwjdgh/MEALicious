@@ -130,7 +130,7 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 if(appbarLayout.getTop()<0) {
                     appbarLayout.setExpanded(true);
-
+                    textView.setText("");
                 }
                 else {
                     String str = autoCompleteTextView1.getText().toString();
