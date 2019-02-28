@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/lag"
         android:title="언어"
         app:showAsAction="never">
+
         <menu>
-            <item
-                android:id="@+id/eng"
-                android:title="영어"
-                app:showAsAction="never"/>
-            <item
-                android:id="@+id/kor"
-                android:title="한국어"
-                app:showAsAction="never"/>
-            <item
-                android:id="@+id/cin"
-                android:title="중국어"
-                app:showAsAction="never"/>
-            <item
-                android:id="@+id/jap"
-                android:title="일본어"
-                app:showAsAction="never"/>
+            <group
+                android:id="@+id/igroup"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/eng"
+                    android:title="영어"
+                    app:showAsAction="never"/>
+                <item
+                    android:id="@+id/kor"
+                    android:title="한국어"
+                    app:showAsAction="never"/>
+                <item
+                    android:id="@+id/cin"
+                    android:title="중국어"
+                    app:showAsAction="never"/>
+                <item
+                    android:id="@+id/jap"
+                    android:title="일본어"
+                    app:showAsAction="never"/>
+            </group>
         </menu>
     </item>
 
@@ -29,4 +35,5 @@
         android:id="@+id/map"
         android:title="배치도"
         app:showAsAction="never"/>
+
 </menu>

@@ -12,10 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Item;
 import com.example.meal.R;
@@ -47,13 +44,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         holder.image.setBackground(drawable);
         holder.image1.setBackground(drawable);
-        //holder.title.setText(item.getTitle());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TodayMenuActivity.class);
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                //Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -65,15 +60,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image, image1;
-        TextView title;
         CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.image);
-            image1 = (ImageView) itemView.findViewById(R.id.image1);
-            //title = (TextView) itemView.findViewById(R.id.title);
-            cardview = (CardView) itemView.findViewById(R.id.cardview);
+            image = itemView.findViewById(R.id.image);
+            image1 = itemView.findViewById(R.id.image1);
+            cardview = itemView.findViewById(R.id.cardview);
         }
     }
 }
