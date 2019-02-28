@@ -42,6 +42,7 @@ public class MenuFragment extends Fragment {
     RecyclerView recyclerView;
     RadioGroup radioGroup;
 
+    int round = 0;
     final int ITEM_SIZE = 5;
 
     @Override
@@ -113,10 +114,12 @@ public class MenuFragment extends Fragment {
                 if(checkedId == R.id.option1){
                     dateView2.setText(localDate2.format(DateTimeFormatter.ISO_LOCAL_DATE));
                     dateView2.setClickable(true);
+                    round = 1;
                 }
                 else {
                     dateView2.setText("");
                     dateView2.setClickable(false);
+                    round = 2;
                 }
             }
         };
@@ -144,23 +147,25 @@ public class MenuFragment extends Fragment {
                             textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
                         }
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(layoutManager);
-                        List<Item> items = new ArrayList<>();
-                        Item[] item = new Item[ITEM_SIZE];
-                        item[0] = new Item(R.drawable.airport, R.drawable.airport, "#1");
-                        item[1] = new Item(R.drawable.airport, R.drawable.airport, "#2");
-                        item[2] = new Item(R.drawable.airport, R.drawable.airport, "#3");
-                        item[3] = new Item(R.drawable.airport, R.drawable.airport, "#4");
-                        item[4] = new Item(R.drawable.airport, R.drawable.airport, "#5");
+                        if(round!=0) {
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(layoutManager);
+                            List<Item> items = new ArrayList<>();
+                            Item[] item = new Item[ITEM_SIZE];
+                            item[0] = new Item(R.drawable.airport, "#1");
+                            item[1] = new Item(R.drawable.airport, "#2");
+                            item[2] = new Item(R.drawable.airport, "#3");
+                            item[3] = new Item(R.drawable.airport, "#4");
+                            item[4] = new Item(R.drawable.airport, "#5");
 
-                        for (int i = 0; i < ITEM_SIZE; i++) {
-                            items.add(item[i]);
+                            for (int i = 0; i < ITEM_SIZE; i++)
+                                items.add(item[i]);
+
+                            recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(), items, R.layout.fragment_menu, round));
                         }
-
-                        recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(), items, R.layout.fragment_menu));
                     }
+
                 }
             }
         });

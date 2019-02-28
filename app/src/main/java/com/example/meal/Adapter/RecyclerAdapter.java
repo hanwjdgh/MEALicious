@@ -22,17 +22,22 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     Context context;
     List<Item> items;
-    int item_layout;
+    int item_layout, round;
+    View v;
 
-    public RecyclerAdapter(Context context, List<Item> items, int item_layout) {
+    public RecyclerAdapter(Context context, List<Item> items, int item_layout, int chk) {
         this.context = context;
         this.items = items;
         this.item_layout = item_layout;
+        this.round = chk;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview, null, false);
+        if(round==1)
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview, null, false);
+        else if(round==2)
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview1, null, false);
         v.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ViewHolder(v);
     }
@@ -43,12 +48,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final Item item = items.get(position);
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         holder.image.setBackground(drawable);
-        holder.image1.setBackground(drawable);
+        if(round==1)
+            holder.image1.setBackground(drawable);
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TodayMenuActivity.class);
-                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                intent.putExtra("round",String.valueOf(round));
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             }
         });
     }
