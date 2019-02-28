@@ -10,16 +10,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Activity.WalletActivity;
 import com.example.meal.R;
 
@@ -27,7 +22,6 @@ public class OrderFragment extends Fragment {
     InputMethodManager imm;
     View v;
     ImageView confirm;
-    final Dialog dialog = null;
     int i = 0;
 
     @Override
@@ -71,7 +65,6 @@ public class OrderFragment extends Fragment {
             }
         });
 
-
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,16 +72,6 @@ public class OrderFragment extends Fragment {
                 imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
             }
         });
-
-//        RadioButton.OnClickListener optionOnClickListener
-//                = new RadioButton.OnClickListener() {
-//
-//            public void onClick(View v) {
-//
-//            }
-//        };
-//        option1.setOnClickListener(optionOnClickListener);
-//        option2.setOnClickListener(optionOnClickListener);
 
         goNext.setOnClickListener(new View.OnClickListener() {
             @Override

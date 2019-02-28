@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"
 
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="203dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -64,7 +64,7 @@
                 android:layout_width="192dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="370dp"
-                android:layout_marginTop="277dp"
+                android:layout_marginTop="285dp"
                 android:background="@android:color/transparent"
                 android:completionThreshold="1"
                 android:gravity="center"
@@ -77,7 +77,7 @@
                 android:layout_width="192dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="766dp"
-                android:layout_marginTop="277dp"
+                android:layout_marginTop="285dp"
                 android:background="@android:color/transparent"
                 android:completionThreshold="1"
                 android:gravity="center"
@@ -90,9 +90,10 @@
                 android:layout_width="136dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="405dp"
-                android:layout_marginTop="365dp"
+                android:layout_marginTop="373dp"
                 android:clickable="true"
                 android:text="Date"
+                android:textColor="@android:color/black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <TextView
@@ -100,9 +101,10 @@
                 android:layout_width="160dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="803dp"
-                android:layout_marginTop="365dp"
+                android:layout_marginTop="373dp"
                 android:clickable="true"
                 android:text="Date"
+                android:textColor="@android:color/black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -139,11 +141,11 @@
         android:scaleType="centerCrop"
         android:src="@drawable/search_icon"
         app:borderWidth="0dp"
-        app:fabCustomSize="112dp"
+        app:fabCustomSize="80dp"
         app:fabSize="auto"
         app:layout_anchor="@id/collapsingToolbarLayout01"
         app:layout_anchorGravity="bottom|end"
-        app:maxImageSize="80dp" />
+        app:maxImageSize="60dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rv"
