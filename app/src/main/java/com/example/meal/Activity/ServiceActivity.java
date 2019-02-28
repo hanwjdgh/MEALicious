@@ -9,9 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +22,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     public static ViewPager mViewPager;
     public static  ContentsPagerAdapter mContentPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +67,8 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     private View createTabView(String tabName) {
-
         View tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab, null);
-        TextView txt_name = (TextView) tabView.findViewById(R.id.txt_name);
+        TextView txt_name = tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
         txt_name.setTextSize(27);
         txt_name.setTextColor(Color.WHITE);
@@ -79,17 +77,18 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar_actions, menu);
+        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        item.setChecked(true);
         switch (item.getItemId()){
             case android.R.id.home:
-                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
                 onBackPressed();
+                return true;
+            case R.id.lag:
                 return true;
             case R.id.eng:
                 Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
@@ -112,6 +111,7 @@ public class ServiceActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onBackPressed(){
         int curItem = mViewPager.getCurrentItem();

@@ -22,8 +22,10 @@
         <activity android:name=".Activity.ServiceActivity"
             android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".Activity.MainActivity"/>
-        <activity android:name=".Activity.TodayMenuActivity"/>
-        <activity android:name=".Activity.MenuDetailActivity"/>
+        <activity android:name=".Activity.TodayMenuActivity"
+            android:parentActivityName=".Activity.ServiceActivity"/>
+        <activity android:name=".Activity.MenuDetailActivity"
+            android:parentActivityName=".Activity.ServiceActivity"/>
         <activity android:name=".Activity.WalletActivity"/>
         <activity android:name=".Activity.DetailActivity"/>
     </application>
