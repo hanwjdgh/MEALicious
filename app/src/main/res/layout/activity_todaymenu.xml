@@ -2,13 +2,13 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/rel">
 
     <LinearLayout
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
         android:orientation="vertical">
         <TextView
             android:id="@+id/textView"
@@ -63,13 +63,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <Button
-        android:layout_below="@+id/card2"
-        android:id="@+id/obutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="주문하기"
-        android:layout_marginTop="60dp"
-        android:layout_centerHorizontal="true"
-        />
+
 </RelativeLayout>
