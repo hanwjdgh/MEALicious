@@ -6,18 +6,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.meal.R;
 
 public class TodayMenuActivity extends ServiceActivity {
     View view, view1;
+    LinearLayout linearLayout1, linearLayout2;
+    int check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todaymenu);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
+        Intent intent = getIntent();
+        check = Integer.parseInt(intent.getStringExtra("round"));
+
+        linearLayout1 = findViewById(R.id.card1);
+        linearLayout2 = findViewById(R.id.card2);
+
+        if(check==2)
+            linearLayout2.setVisibility(View.GONE);
         view = findViewById(R.id.inc);
         view1 = findViewById(R.id.inc1);
 
