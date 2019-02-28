@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
     RecyclerView recyclerView;
     RadioGroup radioGroup;
 
-    int round = 0;
+    int round = 1;
     final int ITEM_SIZE = 5;
 
     @Override
