@@ -12,12 +12,12 @@
                 android:id="@+id/igroup"
                 android:checkableBehavior="single">
                 <item
-                    android:id="@+id/eng"
-                    android:title="영어"
-                    app:showAsAction="never"/>
-                <item
                     android:id="@+id/kor"
                     android:title="한국어"
+                    app:showAsAction="never"/>
+                <item
+                    android:id="@+id/eng"
+                    android:title="영어"
                     app:showAsAction="never"/>
                 <item
                     android:id="@+id/cin"

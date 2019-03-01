@@ -20,7 +20,11 @@ import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.R;
 
 public class ServiceActivity extends AppCompatActivity {
+    public static String menu_title[][]={{"한국어","영어","중국어","일본어"},{"Korean","English","Chinese","Japanese"},{"韩国语","英语","汉语","日语"},{"かんこくご","えいご","ちゅうごくご","にほんご"}};
+    public static String lan[] = {"언어","Language","语言","げんご"};
     private Context mContext;
+
+    public static int check_lan = 0;
 
     public static ViewPager mViewPager;
     public static  ContentsPagerAdapter mContentPagerAdapter;
@@ -81,6 +85,10 @@ public class ServiceActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
+        menu.getItem(0).getSubMenu().getItem(check_lan).setChecked(true);
+        menu.getItem(0).setTitle(lan[check_lan]);
+        for(int i=0; i<4; i++)
+            menu.getItem(0).getSubMenu().getItem(i).setTitle(menu_title[check_lan][i]);
         return true;
     }
 
@@ -95,17 +103,25 @@ public class ServiceActivity extends AppCompatActivity {
                 return true;
             case R.id.lag:
                 return true;
-            case R.id.eng:
-                Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.kor:
+                check_lan = 0;
                 Toast.makeText(this, "한국어", Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
+                return true;
+            case R.id.eng:
+                check_lan = 1;
+                Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
                 return true;
             case R.id.cin:
+                check_lan = 2;
                 Toast.makeText(this, "중국어", Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
                 return true;
             case R.id.jap:
+                check_lan = 3;
                 Toast.makeText(this, "일어", Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
                 return true;
             case R.id.map:
                 Dialog dialog = new Dialog(ServiceActivity.this);
@@ -120,7 +136,12 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         overridePendingTransition(0,0);
-        //액티비티 애니메이션 x
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        invalidateOptionsMenu();
     }
 
     @Override
