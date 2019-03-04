@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.meal.Activity.WalletActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,8 +73,8 @@ public class CardWalletView extends RelativeLayout {
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         int padding = convertDpToPixel(20, getContext());
         setPadding(padding, 0, padding, 0);
-        final int blackTransparent = getResources().getColor(R.color.design_default_color_primary_dark);
-        final int transparent = getResources().getColor(R.color.colorAccent);
+        final int blackTransparent = getResources().getColor(R.color.colorBlank);
+        final int transparent = getResources().getColor(R.color.colorWallet);
         mColorFadeDown = ObjectAnimator.ofObject(this, "backgroundColor", new ArgbEvaluator(), transparent, blackTransparent);
         mColorFadeUp = ObjectAnimator.ofObject(this, "backgroundColor", new ArgbEvaluator(), blackTransparent, transparent);
 
@@ -80,6 +82,9 @@ public class CardWalletView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mIsPresentingCards) {
+                    if (mCardViews.equals(R.drawable.trip_1)) {
+//                        mCardViews.set(0,R.drawable.ticket);
+                    }
                     exitPresentingCardMode();
                 }
             }

@@ -22,9 +22,9 @@ public class WalletActivity extends AppCompatActivity {
 
         List<CardView> cardsViews = new ArrayList<>();
 
-        cardsViews.add(new CardView(this, R.drawable.ticket));
-        cardsViews.add(new CardView(this, R.drawable.ticket));
-        cardsViews.add(new CardView(this, R.drawable.ticket));
+        cardsViews.add(new CardView(this, R.drawable.trip_1));
+        cardsViews.add(new CardView(this, R.drawable.trip_2));
+//        cardsViews.add(new CardView(this, R.drawable.ticket));
 
         mCardWalletView = new CardWalletView(this, cardsViews);
         ((RelativeLayout) findViewById(R.id.activity_layout)).addView(mCardWalletView);
