@@ -8,11 +8,13 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.meal.CardView;
 import com.example.meal.R;
 
 public class TodayMenuActivity extends AppCompatActivity {
@@ -36,14 +38,14 @@ public class TodayMenuActivity extends AppCompatActivity {
         linearLayout1 = findViewById(R.id.card1);
         linearLayout2 = findViewById(R.id.card2);
         relativeLayout = findViewById(R.id.rel);
+        view = findViewById(R.id.inc);
+        view1 = findViewById(R.id.inc1);
 
         if(check==2) {
             relativeLayout.setGravity(Gravity.CENTER_VERTICAL);
             relativeLayout.setPadding(0,0,0,200);
             linearLayout2.setVisibility(View.GONE);
         }
-        view = findViewById(R.id.inc);
-        view1 = findViewById(R.id.inc1);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
