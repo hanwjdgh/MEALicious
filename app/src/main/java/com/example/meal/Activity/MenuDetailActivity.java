@@ -48,29 +48,25 @@ public class MenuDetailActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
                 return true;
             case R.id.kor:
                 ServiceActivity.check_lan = 0;
-                Toast.makeText(this, "한국어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.eng:
                 ServiceActivity.check_lan = 1;
-                Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.cin:
                 ServiceActivity.check_lan = 2;
-                Toast.makeText(this, "중국어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.jap:
                 ServiceActivity.check_lan = 3;
-                Toast.makeText(this, "일어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.map:

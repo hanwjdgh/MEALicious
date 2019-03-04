@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,10 +12,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.meal.R;
-import com.tomer.fadingtextview.FadingTextView;
 
 public class MainActivity extends AppCompatActivity {
-    private FadingTextView fadingTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -39,25 +35,29 @@ public class MainActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"영어",Toast.LENGTH_SHORT).show();
+                ServiceActivity.check_lan = 0;
+                Toast.makeText(getApplicationContext(),"한국어",Toast.LENGTH_SHORT).show();
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"한국어",Toast.LENGTH_SHORT).show();
+                ServiceActivity.check_lan = 1;
+                Toast.makeText(getApplicationContext(),"English",Toast.LENGTH_SHORT).show();
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"중국어",Toast.LENGTH_SHORT).show();
+                ServiceActivity.check_lan = 2;
+                Toast.makeText(getApplicationContext(),"汉语",Toast.LENGTH_SHORT).show();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"일본어",Toast.LENGTH_SHORT).show();
+                ServiceActivity.check_lan = 3;
+                Toast.makeText(getApplicationContext(),"にほんご",Toast.LENGTH_SHORT).show();
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {

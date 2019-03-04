@@ -82,7 +82,7 @@ public class OrderFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), WalletActivity.class);
 
 //                    intent.putExtra("passport",editText.getText().toString());
-                    startActivity(intent);
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 }
             }
         });

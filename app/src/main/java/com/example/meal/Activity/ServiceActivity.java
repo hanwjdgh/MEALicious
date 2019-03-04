@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -50,7 +49,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         mViewPager = findViewById(R.id.pager_content);
         mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
-        //mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mContentPagerAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
@@ -98,29 +97,25 @@ public class ServiceActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
                 return true;
             case R.id.kor:
                 check_lan = 0;
-                Toast.makeText(this, "한국어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.eng:
                 check_lan = 1;
-                Toast.makeText(this, "영어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.cin:
                 check_lan = 2;
-                Toast.makeText(this, "중국어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.jap:
                 check_lan = 3;
-                Toast.makeText(this, "일어", Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
                 return true;
             case R.id.map:
