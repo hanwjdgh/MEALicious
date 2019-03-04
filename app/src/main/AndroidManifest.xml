@@ -24,7 +24,6 @@
         <activity android:name=".Activity.TodayMenuActivity" />
         <activity android:name=".Activity.MenuDetailActivity" />
         <activity android:name=".Activity.WalletActivity"/>
-        <activity android:name=".Activity.DetailActivity"/>
     </application>
 
 </manifest>

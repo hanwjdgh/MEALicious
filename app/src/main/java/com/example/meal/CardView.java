@@ -1,7 +1,7 @@
 package com.example.meal;
+
 import android.content.Context;
 import android.util.AttributeSet;
-
 
 public class CardView extends android.support.v7.widget.AppCompatImageView {
 

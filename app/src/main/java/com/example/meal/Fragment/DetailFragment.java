@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.Adapter.DetailPagerAdapter;
 import com.example.meal.R;
 
@@ -34,8 +33,6 @@ public class DetailFragment extends Fragment {
         Bundle bundle = getArguments();
         String actionTitle = "DUMMY ACTION";
         Bitmap imageBitmap = null;
-        String transText = "";
-        String transitionName = "";
 
         if (bundle != null) {
             actionTitle = bundle.getString("ACTION");
