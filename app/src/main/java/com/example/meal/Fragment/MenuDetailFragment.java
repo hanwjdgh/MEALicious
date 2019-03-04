@@ -17,7 +17,7 @@ public class MenuDetailFragment extends Fragment{
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
 
-    String menuname[] = {"메뉴1","메뉴2","메뉴3"};
+    String menuname[] = {"메뉴 1","메뉴 2","메뉴 3"};
     int Images[] = {R.drawable.meal_1,R.drawable.meal_2,R.drawable.meal_3};
 
     @Override
