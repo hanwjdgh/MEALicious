@@ -10,9 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.meal.Activity.MenuDetailActivity;
+import com.example.meal.Activity.ServiceActivity;
+import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
 import com.example.meal.R;
 
@@ -22,6 +26,7 @@ public class DetailFragment extends Fragment {
     TabLayout mTaplayout;
     ViewPager mViewpager;
     DetailPagerAdapter mDetailPagerAdapter;
+    Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,19 @@ public class DetailFragment extends Fragment {
         ((TextView) view.findViewById(R.id.textView)).setText(actionTitle);
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
+        button = view.findViewById(R.id.obutton);
+
+        if(TodayMenuActivity.mode == 1)
+            button.setVisibility(View.VISIBLE);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ServiceActivity.mViewPager.setCurrentItem(2);
+                getActivity().finish();
+            }
+        });
+
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("About")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Inform")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Review")));

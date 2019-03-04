@@ -44,8 +44,7 @@ public class ServiceActivity extends AppCompatActivity {
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("서비스")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("오늘의 메뉴")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("주문하기")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("이벤트")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("뉴스")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("소식")));
 
         mViewPager = findViewById(R.id.pager_content);
         mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
