@@ -50,5 +50,12 @@
             android:layout_width="500dp"
             android:layout_height="447dp"
             android:layout_marginLeft="30dp"/>
+        <Button
+            android:id="@+id/obutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주문하기"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </LinearLayout>

@@ -19,6 +19,7 @@ public class TodayMenuActivity extends AppCompatActivity {
     LinearLayout linearLayout1, linearLayout2;
     RelativeLayout relativeLayout;
     int check;
+    public static int mode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class TodayMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TodayMenuActivity.this, MenuDetailActivity.class);
                 startActivity(intent);
+                mode = 0;
                 overridePendingTransition(0,0);
             }
         });
@@ -57,10 +59,18 @@ public class TodayMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TodayMenuActivity.this, MenuDetailActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
+                mode = 1;
                 overridePendingTransition(0,0);
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == 0) {
+            finish();
+            overridePendingTransition(0,0);
+        }
     }
 
     @Override

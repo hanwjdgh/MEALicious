@@ -19,7 +19,7 @@
         <LinearLayout
             android:layout_below="@+id/dtext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:id="@+id/linear"
             android:orientation="horizontal">
@@ -27,7 +27,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal">
             </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>

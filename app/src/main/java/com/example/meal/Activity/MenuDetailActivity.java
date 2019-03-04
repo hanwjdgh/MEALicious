@@ -26,8 +26,10 @@ public class MenuDetailActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public void onBackPressed(){
+        setResult(1);
         super.onBackPressed();
         overridePendingTransition(0,0);
     }
