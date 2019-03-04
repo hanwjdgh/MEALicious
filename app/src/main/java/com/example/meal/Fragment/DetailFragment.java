@@ -13,12 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.meal.Adapter.ContentsPagerAdapter;
+import com.example.meal.Adapter.DetailPagerAdapter;
 import com.example.meal.R;
 
 public class DetailFragment extends Fragment {
     public ViewPager mViewPager;
     private Context mContext;
     TabLayout mTaplayout;
+    ViewPager mViewpager;
+    DetailPagerAdapter mDetailPagerAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +47,33 @@ public class DetailFragment extends Fragment {
         ((ImageView) view.findViewById(R.id.listImage)).setImageBitmap(imageBitmap);
         ((TextView) view.findViewById(R.id.textView)).setText(actionTitle);
         mContext = getActivity().getApplicationContext();
-        mTaplayout = view.findViewById(R.id.tab);
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("서비스")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("오늘의 메뉴")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("주문하기")));
+        mTaplayout = view.findViewById(R.id.detailtab);
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("About")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Inform")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Review")));
+
+        mViewpager = view.findViewById(R.id.detailpager);
+        mDetailPagerAdapter = new DetailPagerAdapter(getActivity().getSupportFragmentManager(), mTaplayout.getTabCount());
+        mViewpager.setOffscreenPageLimit(3);
+        mViewpager.setAdapter(mDetailPagerAdapter);
+
+        mViewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
+        mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewpager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         return view;
     }

@@ -50,7 +50,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         mViewPager = findViewById(R.id.pager_content);
         mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
-        mViewPager.setOffscreenPageLimit(3);
+        //mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mContentPagerAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));

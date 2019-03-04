@@ -10,25 +10,27 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
+        card_view:cardElevation="0dp"
+        card_view:cardBackgroundColor="@android:color/transparent"
         card_view:cardCornerRadius="5dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:id="@+id/textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
                 android:text="메뉴 1"
                 android:textSize="30dp" />
             <ImageView
                 android:layout_below="@+id/textview"
                 android:id="@+id/imageview"
+                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
-                android:layout_width="400dp"
+                android:layout_width="600dp"
                 android:layout_height="400dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/meal_1" />
