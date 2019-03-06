@@ -5,11 +5,13 @@ import com.example.meal.CardWalletView;
 import com.example.meal.R;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +30,9 @@ public class WalletActivity extends AppCompatActivity {
 
         List<CardView> cardsViews = new ArrayList<>();
 
-        cardsViews.add(new CardView(this, R.drawable.trip_1));
-        cardsViews.add(new CardView(this, R.drawable.trip_2));
-//        cardsViews.add(new CardView(this, R.drawable.ticket));
+        cardsViews.add(new CardView(this, Color.CYAN));
+        cardsViews.add(new CardView(this, Color.GREEN));
+        cardsViews.add(new CardView(this, Color.YELLOW));
 
         mCardWalletView = new CardWalletView(this, cardsViews);
         ((RelativeLayout) findViewById(R.id.activity_layout)).addView(mCardWalletView);
@@ -42,17 +44,16 @@ public class WalletActivity extends AppCompatActivity {
             mCardWalletView.exitPresentingCardMode();
         } else {
             super.onBackPressed();
-            overridePendingTransition(0, 0);
+            overridePendingTransition(0,0);
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         menu.getItem(0).getSubMenu().getItem(ServiceActivity.check_lan).setChecked(true);
         menu.getItem(0).setTitle(ServiceActivity.lan[ServiceActivity.check_lan]);
-        for (int i = 0; i < 4; i++)
+        for(int i=0; i<4; i++)
             menu.getItem(0).getSubMenu().getItem(i).setTitle(ServiceActivity.menu_title[ServiceActivity.check_lan][i]);
         return true;
     }
@@ -60,7 +61,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         item.setChecked(true);
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -93,7 +94,6 @@ public class WalletActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
     @Override
     protected void onResume() {
         super.onResume();

@@ -9,9 +9,11 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.meal.Activity.WalletActivity;
 
@@ -20,27 +22,15 @@ import java.util.List;
 
 
 public class CardWalletView extends RelativeLayout {
-
-    private List<? extends View> mCardViews;
-
-    private ObjectAnimator mColorFadeDown;
-
-    private ObjectAnimator mColorFadeUp;
-
+    private List<CardView > mCardViews;
     private List<Float> mCardViewOriginalY;
-
     private boolean mIsPresentingCards;
-
     private int mCardOffset;
 
-    public CardWalletView(Context context, List<? extends View> cardViews) {
-        this(context, cardViews, 60);
-    }
-
-    public CardWalletView(Context context, List<? extends View> cardViews, int cardOffset) {
-        this(context);
+    public CardWalletView(Context context, List<CardView > cardViews) {
+        super(context);
         mCardViews = cardViews;
-        mCardOffset = cardOffset;
+        mCardOffset = 60;
         initView();
     }
 
@@ -71,20 +61,11 @@ public class CardWalletView extends RelativeLayout {
     private void initView() {
         inflate(getContext(), R.layout.layout_cards_container, this);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        int padding = convertDpToPixel(20, getContext());
-        setPadding(padding, 0, padding, 0);
-        final int blackTransparent = getResources().getColor(R.color.colorBlank);
-        final int transparent = getResources().getColor(R.color.colorWallet);
-        mColorFadeDown = ObjectAnimator.ofObject(this, "backgroundColor", new ArgbEvaluator(), transparent, blackTransparent);
-        mColorFadeUp = ObjectAnimator.ofObject(this, "backgroundColor", new ArgbEvaluator(), blackTransparent, transparent);
-
+        setGravity(Gravity.CENTER);
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mIsPresentingCards) {
-                    if (mCardViews.equals(R.drawable.trip_1)) {
-//                        mCardViews.set(0,R.drawable.ticket);
-                    }
                     exitPresentingCardMode();
                 }
             }
@@ -105,7 +86,7 @@ public class CardWalletView extends RelativeLayout {
                         if (!mIsPresentingCards) {
                             enterPresentingCardMode();
                         }
-                        tidyCards();
+                        moveDowns();
                         final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 50);
                         translationY.start();
                     }
@@ -120,13 +101,11 @@ public class CardWalletView extends RelativeLayout {
     }
 
     public void enterPresentingCardMode() {
-        mColorFadeDown.start();
         setClickable(true);
         mIsPresentingCards = true;
     }
 
     public void exitPresentingCardMode() {
-        mColorFadeUp.start();
         tidyCards();
         setClickable(false);
         mIsPresentingCards = false;
@@ -142,6 +121,20 @@ public class CardWalletView extends RelativeLayout {
         for (int i = 0; i < mCardViews.size(); i++) {
             View cardView = mCardViews.get(i);
             final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", mCardViewOriginalY.get(i));
+            translationY.start();
+        }
+    }
+
+    public void moveDowns(){
+        if (mCardViewOriginalY == null) {
+            mCardViewOriginalY = new ArrayList<>();
+            for (View cardView : mCardViews) {
+                mCardViewOriginalY.add(cardView.getY());
+            }
+        }
+        for (int i = 0; i < mCardViews.size(); i++) {
+            View cardView = mCardViews.get(i);
+            final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 1000-20*i);
             translationY.start();
         }
     }
