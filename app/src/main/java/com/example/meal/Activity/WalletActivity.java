@@ -6,12 +6,12 @@ import com.example.meal.R;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +31,9 @@ public class WalletActivity extends AppCompatActivity {
 
         List<CardView> cardsViews = new ArrayList<>();
 
-        cardsViews.add(new CardView(this, R.drawable.trip_1));
-        cardsViews.add(new CardView(this, R.drawable.trip_2));
-//        cardsViews.add(new CardView(this, R.drawable.ticket));
+        cardsViews.add(new CardView(this, Color.CYAN));
+        cardsViews.add(new CardView(this, Color.GREEN));
+        cardsViews.add(new CardView(this, Color.YELLOW));
 
         mCardWalletView = new CardWalletView(this, cardsViews);
         ((RelativeLayout) findViewById(R.id.activity_layout)).addView(mCardWalletView);
