@@ -3,17 +3,28 @@ package com.example.meal.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.example.meal.R;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private int animationCounter = 1;
+    private Handler imageSwitcherHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,43 +32,103 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView iv = findViewById(R.id.main_image);
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        Button button4 = findViewById(R.id.button4);
-        Button button5 = findViewById(R.id.button5);
+        final com.tomer.fadingtextview.FadingTextView fadingTextView = findViewById(R.id.fading_text_view);
 
-        AnimationDrawable animationDrawable = (AnimationDrawable) iv.getDrawable();
-        if(animationDrawable!=null)
-            animationDrawable.start();
+        Animation in  = AnimationUtils.loadAnimation(this, R.anim.left_to_right_in);
+        Animation out = AnimationUtils.loadAnimation(this, R.anim.left_to_right_out);
+
+        final ImageSwitcher imageSwitcher = (ImageSwitcher)findViewById(R.id.main_image);
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(MainActivity.this);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                return imageView;
+            }
+        });
+
+//        ImageView iv = findViewById(R.id.main_image);
+        ImageView button1 = findViewById(R.id.button1);
+        final ImageView button2 = findViewById(R.id.button2);
+        final ImageView button3 = findViewById(R.id.button3);
+        final ImageView button4 = findViewById(R.id.button4);
+        final ImageView button5 = findViewById(R.id.button5);
+
+        imageSwitcher.setInAnimation(in);
+        imageSwitcher.setOutAnimation(out);
+
+
+        imageSwitcherHandler = new Handler(Looper.getMainLooper());
+        imageSwitcherHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                switch (animationCounter++) {
+                    case 1:
+                        imageSwitcher.setImageResource(R.drawable.main_image_1);
+                        break;
+                    case 2:
+                        imageSwitcher.setImageResource(R.drawable.main_image_2);
+                        break;
+                    case 3:
+                        imageSwitcher.setImageResource(R.drawable.main_image_3);
+                        break;
+                }
+                animationCounter %= 4;
+                if(animationCounter == 0 ) animationCounter = 1;
+
+                imageSwitcherHandler.postDelayed(this, 4500);
+            }
+        });
+
+
+//        AnimationDrawable animationDrawable = (AnimationDrawable) iv.getDrawable();
+//        if(animationDrawable!=null) {
+//            animationDrawable.start();
+//        }
+
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceActivity.check_lan = 0;
-                Toast.makeText(getApplicationContext(),"한국어",Toast.LENGTH_SHORT).show();
+                button5.setImageResource(R.drawable.korean_selected);
+                button4.setImageResource(R.drawable.english);
+                button3.setImageResource(R.drawable.chinese);
+                button2.setImageResource(R.drawable.japanese);
+                fadingTextView.setTexts(new String[]{"화면을 터치해주세요"});
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceActivity.check_lan = 1;
-                Toast.makeText(getApplicationContext(),"English",Toast.LENGTH_SHORT).show();
+                button5.setImageResource(R.drawable.korean_button);
+                button4.setImageResource(R.drawable.english_selected);
+                button3.setImageResource(R.drawable.chinese);
+                button2.setImageResource(R.drawable.japanese);
+                fadingTextView.setTexts(new String[]{"Touch the screen"});
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceActivity.check_lan = 2;
-                Toast.makeText(getApplicationContext(),"汉语",Toast.LENGTH_SHORT).show();
+                button5.setImageResource(R.drawable.korean_button);
+                button4.setImageResource(R.drawable.english);
+                button3.setImageResource(R.drawable.chinese_selected);
+                button2.setImageResource(R.drawable.japanese);
+                fadingTextView.setTexts(new String[]{"触摸屏幕"});
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceActivity.check_lan = 3;
-                Toast.makeText(getApplicationContext(),"にほんご",Toast.LENGTH_SHORT).show();
+                button5.setImageResource(R.drawable.korean_button);
+                button4.setImageResource(R.drawable.english);
+                button3.setImageResource(R.drawable.chinese);
+                button2.setImageResource(R.drawable.japanese_selected);
+                fadingTextView.setTexts(new String[]{"画面をタッチしてください"});
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        iv.setOnClickListener(new View.OnClickListener() {
+        imageSwitcher.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
