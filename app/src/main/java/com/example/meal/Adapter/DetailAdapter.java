@@ -38,7 +38,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
     public void onBindViewHolder(final HorizontalViewHolder holder, int position) {
         MenuItem data = list.get(position);
 
-        holder.description.setText(data.getName());
+        holder.description.setImageResource(data.getName());
         holder.icon.setImageResource(data.getImage());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
 //                    detailFragment.setEnterTransition(TransitionInflater.from(activity).inflateTransition(android.R.transition.fade));
 //                }
                 Bundle bundle = new Bundle();
-                bundle.putString("ACTION", holder.description.getText().toString());
+                bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.icon.getDrawable()).getBitmap());
                 detailFragment.setArguments(bundle);
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
@@ -70,7 +70,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
     class HorizontalViewHolder extends RecyclerView.ViewHolder {
 
         ImageView icon;
-        TextView description;
+        ImageView description;
         CardView cardView;
 
         public HorizontalViewHolder(View itemView) {

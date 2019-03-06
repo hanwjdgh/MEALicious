@@ -1,18 +1,18 @@
 package com.example.meal;
 
 public class MenuItem {
-    String name;
+    int name;
     int image;
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
-    public MenuItem(String name, int image) {
+    public MenuItem(int name, int image) {
         this.name = name;
         this.image = image;
     }

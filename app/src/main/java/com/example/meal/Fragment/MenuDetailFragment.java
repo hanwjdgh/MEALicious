@@ -22,7 +22,7 @@ public class MenuDetailFragment extends Fragment{
     LinearLayoutManager layoutManager;
     Button button;
 
-    String menuname[] = {"메뉴 1","메뉴 2","메뉴 3"};
+    int menuname[] = {R.drawable.menu_1,R.drawable.menu_2,R.drawable.menu_3};
     int Images[] = {R.drawable.meal_1,R.drawable.meal_2,R.drawable.meal_3};
 
     @Override
