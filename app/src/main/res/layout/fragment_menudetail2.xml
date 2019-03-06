@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:layout_below="@+id/dtext"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -31,6 +31,25 @@
                 android:scrollbars="horizontal" />
 
         </LinearLayout>
+        <ImageView
+            android:id="@+id/select_message"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/linear"
+
+            android:src="@drawable/select_message" />
+
+        <Button
+            android:id="@+id/obutton"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/linear"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/select_message"
+            android:background="@drawable/order"
+             />
     </RelativeLayout>
 
 </LinearLayout>

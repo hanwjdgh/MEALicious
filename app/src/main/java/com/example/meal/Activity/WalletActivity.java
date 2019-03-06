@@ -3,7 +3,6 @@ package com.example.meal.Activity;
 import com.example.meal.CardView;
 import com.example.meal.CardWalletView;
 import com.example.meal.R;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
