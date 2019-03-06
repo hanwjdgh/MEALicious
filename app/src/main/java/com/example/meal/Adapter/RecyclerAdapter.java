@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Item;
@@ -48,8 +49,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final Item item = items.get(position);
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         holder.image.setBackground(drawable);
-        if(round==1)
+        holder.textView.setText(item.getTitle());
+        holder.air.setText(item.getAir());
+        if(round==1) {
             holder.image1.setBackground(drawable);
+            holder.textView1.setText(item.getTitle());
+            holder.air1.setText(item.getAir());
+        }
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,11 +74,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image, image1;
         CardView cardview;
+        TextView textView, textView1, air, air1;
 
         public ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image);
             image1 = itemView.findViewById(R.id.image1);
+            textView = itemView.findViewById(R.id.airtext);
+            textView1 = itemView.findViewById(R.id.airtext1);
+            air = itemView.findViewById(R.id.air);
+            air1 = itemView.findViewById(R.id.air1);
             cardview = itemView.findViewById(R.id.cardview);
         }
     }
