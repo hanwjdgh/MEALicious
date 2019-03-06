@@ -27,6 +27,7 @@ public class DetailFragment extends Fragment {
     ViewPager mViewpager;
     DetailPagerAdapter mDetailPagerAdapter;
     Button button;
+    ImageView imageView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,10 +52,12 @@ public class DetailFragment extends Fragment {
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
         button = view.findViewById(R.id.obutton);
+        imageView = view.findViewById(R.id.select_message);
 
-        if(TodayMenuActivity.mode == 1)
+        if(TodayMenuActivity.mode == 1) {
             button.setVisibility(View.VISIBLE);
-
+            imageView.setVisibility(View.VISIBLE);
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
