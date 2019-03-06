@@ -37,18 +37,18 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        String actionTitle = "DUMMY ACTION";
+        Bitmap actionTitle = null;
         Bitmap imageBitmap = null;
 
         if (bundle != null) {
-            actionTitle = bundle.getString("ACTION");
+            actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
         }
 
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
 
         ((ImageView) view.findViewById(R.id.listImage)).setImageBitmap(imageBitmap);
-        ((TextView) view.findViewById(R.id.textView)).setText(actionTitle);
+        ((ImageView) view.findViewById(R.id.textView)).setImageBitmap(actionTitle);
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
         button = view.findViewById(R.id.obutton);
