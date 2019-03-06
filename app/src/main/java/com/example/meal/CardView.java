@@ -1,6 +1,7 @@
 package com.example.meal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +18,6 @@ public class CardView extends android.support.v7.widget.CardView {
         this.context = context;
         this.cardImage = cardIdDrawable;
         init();
-
 
         //setImageDrawable(context.getResources().getDrawable(cardIdDrawable));
     }
@@ -36,6 +36,7 @@ public class CardView extends android.support.v7.widget.CardView {
 
     public void init(){
         View v = inflate(getContext(),R.layout.item_flight,this);
+        v.setBackgroundColor(Color.TRANSPARENT);
         imageView = v.findViewById(R.id.img);
         imageView.setImageResource(this.cardImage);
     }

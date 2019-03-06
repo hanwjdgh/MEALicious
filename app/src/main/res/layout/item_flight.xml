@@ -4,11 +4,10 @@
     android:id="@+id/cardview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    card_view:contentPaddingLeft="-10dp"
-    card_view:contentPaddingRight="-10dp"
-    card_view:contentPaddingTop="-10dp"
-    card_view:contentPaddingBottom="-10dp"
-    card_view:cardCornerRadius="0dp">
+    card_view:cardElevation="0dp"
+    card_view:cardBackgroundColor="@android:color/transparent"
+    card_view:cardMaxElevation="0dp"
+    >
 
     <!--<LinearLayout-->
         <!--android:id="@+id/layout"-->
