@@ -6,7 +6,9 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -59,9 +61,9 @@ public class CardWalletView extends RelativeLayout {
     }
 
     private void initView() {
-        inflate(getContext(), R.layout.layout_cards_container, this);
+        //inflate(getContext(), R.layout.layout_cards_container, this);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        setGravity(Gravity.CENTER);
+        //setGravity(Gravity.CENTER);
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

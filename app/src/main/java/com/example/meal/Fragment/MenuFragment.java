@@ -153,10 +153,10 @@ public class MenuFragment extends Fragment {
                             recyclerView.setLayoutManager(layoutManager);
                             List<Item> items = new ArrayList<>();
                             Item[] item = new Item[ITEM_SIZE];
-                            item[0] = new Item(R.drawable.korean_air, "대한항공","(KAL)");
+                            item[0] = new Item(R.drawable.korean, "대한항공","(KAL)");
                             item[1] = new Item(R.drawable.delta, "델타항공","(DAL)");
                             item[2] = new Item(R.drawable.asiana, "아시아나항공","(AAR)");
-                            item[3] = new Item(R.drawable.korean_air, "대한항공","(KAL)");
+                            item[3] = new Item(R.drawable.korean, "대한항공","(KAL)");
                             item[4] = new Item(R.drawable.delta, "델타항공","(DAL)");
 
                             for (int i = 0; i < ITEM_SIZE; i++)

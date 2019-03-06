@@ -30,10 +30,10 @@ public class WalletActivity extends AppCompatActivity {
 
         List<CardView> cardsViews = new ArrayList<>();
 
-        cardsViews.add(new CardView(this, R.drawable.korean));
-        cardsViews.add(new CardView(this, R.drawable.delta));
-        cardsViews.add(new CardView(this, R.drawable.asiana));
-        cardsViews.add(new CardView(this, R.drawable.jeju));
+        cardsViews.add(new CardView(this, R.drawable.korean_t));
+        cardsViews.add(new CardView(this, R.drawable.delta_t));
+        cardsViews.add(new CardView(this, R.drawable.asiana_t));
+        cardsViews.add(new CardView(this, R.drawable.jeju_t));
         mCardWalletView = new CardWalletView(this, cardsViews);
         ((RelativeLayout) findViewById(R.id.activity_layout)).addView(mCardWalletView);
     }
