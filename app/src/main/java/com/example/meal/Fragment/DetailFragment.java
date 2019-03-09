@@ -111,7 +111,7 @@ public class DetailFragment extends Fragment {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 테두리 지움
                 dialog.show();
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
-                        (6*10)/7, ViewGroup.LayoutParams.MATCH_PARENT);
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
                  params.x= -397;
                  params.y=50;
