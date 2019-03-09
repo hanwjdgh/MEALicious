@@ -1,8 +1,13 @@
 package com.example.meal.Fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,9 +15,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.ServiceActivity;
@@ -26,7 +33,7 @@ public class DetailFragment extends Fragment {
     TabLayout mTaplayout;
     ViewPager mViewpager;
     DetailPagerAdapter mDetailPagerAdapter;
-    Button button;
+    Button button, video;
     ImageView imageView;
 
     @Override
@@ -52,6 +59,7 @@ public class DetailFragment extends Fragment {
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
         button = view.findViewById(R.id.obutton);
+        video = view.findViewById(R.id.video);
         imageView = view.findViewById(R.id.select_message);
 
         if(TodayMenuActivity.mode == 1) {
@@ -63,6 +71,24 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
                 ServiceActivity.mViewPager.setCurrentItem(2);
                 getActivity().finish();
+            }
+        });
+        video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.video_dialog);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 테두리 지움
+                dialog.show();
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.copyFrom(dialog.getWindow().getAttributes());
+                dialog.getWindow().setAttributes(lp);
+               String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
+                final VideoView videoview = (VideoView) dialog.findViewById(R.id.vv);
+                ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
+                videoview.setVideoURI(Uri.parse(uriPath));
+                videoview.start();
             }
         });
 

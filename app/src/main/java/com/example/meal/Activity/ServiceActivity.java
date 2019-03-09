@@ -19,8 +19,8 @@ import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.R;
 
 public class ServiceActivity extends AppCompatActivity {
-    public static String menu_title[][]={{"한국어","영어","중국어","일본어"},{"Korean","English","Chinese","Japanese"},{"韩国语","英语","汉语","日语"},{"かんこくご","えいご","ちゅうごくご","にほんご"}};
-    public static String lan[] = {"언어","Language","语言","げんご"};
+    public static String menu_title[]={"한국어","English","汉语","日本語"};
+    public static String lan = "Language";
     private Context mContext;
 
     public static int check_lan = 0;
@@ -84,9 +84,9 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         menu.getItem(0).getSubMenu().getItem(check_lan).setChecked(true);
-        menu.getItem(0).setTitle(lan[check_lan]);
+        menu.getItem(0).setTitle("language");
         for(int i=0; i<4; i++)
-            menu.getItem(0).getSubMenu().getItem(i).setTitle(menu_title[check_lan][i]);
+            menu.getItem(0).getSubMenu().getItem(i).setTitle(menu_title[i]);
         return true;
     }
 
