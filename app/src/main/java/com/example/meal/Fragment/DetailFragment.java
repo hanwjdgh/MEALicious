@@ -87,6 +87,8 @@ public class DetailFragment extends Fragment {
                     builder.setPositiveButton("예",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    getActivity().finish();
+//                                    ((MenuDetailActivity)v.getContext()).finish();
                                 }
                             });
                     builder.setNegativeButton("아니오",
