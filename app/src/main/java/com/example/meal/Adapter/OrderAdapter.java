@@ -1,5 +1,6 @@
 package com.example.meal.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.meal.Activity.MainActivity;
+import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Fragment.DetailFragment;
 import com.example.meal.MenuItem;
 import com.example.meal.R;
@@ -59,13 +61,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
         });
         holder.order.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setMessage("주문 하실??");
                 builder.setPositiveButton("예",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-
+                                ((MenuDetailActivity)v.getContext()).finish();
                             }
                         });
                 builder.setNegativeButton("아니오",

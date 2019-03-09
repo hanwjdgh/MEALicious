@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -86,7 +87,6 @@ public class DetailFragment extends Fragment {
                     builder.setPositiveButton("예",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-
                                 }
                             });
                     builder.setNegativeButton("아니오",
@@ -110,11 +110,12 @@ public class DetailFragment extends Fragment {
                 dialog.setContentView(R.layout.video_dialog);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 테두리 지움
                 dialog.show();
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-                 params.x= -397;
-                 params.y=50;
+                //params.x= -397;
+                params.y=35;
+                params.width = 1500;
+                //params.height = 700;
                 dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
@@ -123,6 +124,10 @@ public class DetailFragment extends Fragment {
                 ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
                 videoview.setVideoURI(Uri.parse(uriPath));
                 videoview.setZOrderOnTop(true);
+                LinearLayout.LayoutParams pp = (LinearLayout.LayoutParams) videoview.getLayoutParams();
+                //pp.weight = 974;
+                pp.height = 900;
+                videoview.setLayoutParams(pp);
                 videoview.start();
             }
         });
