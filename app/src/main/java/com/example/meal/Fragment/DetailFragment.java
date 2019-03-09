@@ -3,6 +3,7 @@ package com.example.meal.Fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,14 +67,37 @@ public class DetailFragment extends Fragment {
         if(TodayMenuActivity.mode == 1) {
             button.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.VISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ServiceActivity.mViewPager.setCurrentItem(2);
+                    getActivity().finish();
+                }
+            });
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ServiceActivity.mViewPager.setCurrentItem(2);
-                getActivity().finish();
-            }
-        });
+        else if(TodayMenuActivity.mode==3) {
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setMessage("주문 하실??");
+                    builder.setPositiveButton("예",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                    builder.setNegativeButton("아니오",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                    builder.show();
+                }
+            });
+        }
+
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +109,7 @@ public class DetailFragment extends Fragment {
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
-               String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
+                String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
                 final VideoView videoview = (VideoView) dialog.findViewById(R.id.vv);
                 ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
                 videoview.setVideoURI(Uri.parse(uriPath));

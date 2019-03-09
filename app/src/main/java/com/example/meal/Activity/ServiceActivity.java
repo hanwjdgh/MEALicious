@@ -52,6 +52,7 @@ public class ServiceActivity extends AppCompatActivity {
         mViewPager.setAdapter(mContentPagerAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
+        mViewPager.setCurrentItem(SelectActivity.s_num);
         mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
@@ -140,10 +141,11 @@ public class ServiceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        int curItem = mViewPager.getCurrentItem();
-        if(curItem!=0)
-            mViewPager.setCurrentItem(0,true);
-        else
-            super.onBackPressed();
+//        int curItem = mViewPager.getCurrentItem();
+//        if(curItem!=0)
+//            mViewPager.setCurrentItem(0,true);
+//        else
+        super.onBackPressed();
+        overridePendingTransition(0,0);
     }
 }
