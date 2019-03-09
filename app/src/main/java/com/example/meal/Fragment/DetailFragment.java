@@ -87,7 +87,6 @@ public class DetailFragment extends Fragment {
                     builder.setPositiveButton("예",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-
                                 }
                             });
                     builder.setNegativeButton("아니오",
@@ -113,9 +112,9 @@ public class DetailFragment extends Fragment {
                 dialog.show();
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-                params.x= -397;
+                //params.x= -397;
                 params.y=35;
-                params.width = 974;
+                params.width = 1500;
                 //params.height = 700;
                 dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
