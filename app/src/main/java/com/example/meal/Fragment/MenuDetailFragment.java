@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Adapter.DetailAdapter;
+import com.example.meal.Adapter.OrderAdapter;
 import com.example.meal.MenuItem;
 import com.example.meal.R;
 
@@ -55,17 +57,28 @@ public class MenuDetailFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        DetailAdapter mAdapter = new DetailAdapter();
+        if(TodayMenuActivity.mode!=3) {
+            DetailAdapter mAdapter = new DetailAdapter();
 
-        ArrayList<MenuItem> items = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
-            items.add(new MenuItem(menuname[i], Images[i]));
+            ArrayList<MenuItem> items = new ArrayList<>();
+            for (int i = 0; i < 3; i++)
+                items.add(new MenuItem(menuname[i], Images[i]));
 
 
+            mAdapter.setData(getActivity().getApplicationContext(), items);
+            recyclerView.setAdapter(mAdapter);
+        }
+        else{
+            OrderAdapter mAdapter = new OrderAdapter();
 
-        mAdapter.setData(getActivity().getApplicationContext(),items);
-        recyclerView.setAdapter(mAdapter);
+            ArrayList<MenuItem> items = new ArrayList<>();
+            for (int i = 0; i < 3; i++)
+                items.add(new MenuItem(menuname[i], Images[i]));
 
+
+            mAdapter.setData(getActivity().getApplicationContext(), items);
+            recyclerView.setAdapter(mAdapter);
+        }
         return view;
     }
 }
