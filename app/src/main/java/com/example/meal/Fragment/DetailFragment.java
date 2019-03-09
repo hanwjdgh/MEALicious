@@ -1,12 +1,14 @@
 package com.example.meal.Fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,15 +59,36 @@ public class DetailFragment extends Fragment {
         if(TodayMenuActivity.mode == 1) {
             button.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.VISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ServiceActivity.mViewPager.setCurrentItem(2);
+                    getActivity().finish();
+                }
+            });
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ServiceActivity.mViewPager.setCurrentItem(2);
-                getActivity().finish();
-            }
-        });
+        else if(TodayMenuActivity.mode==3) {
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setMessage("주문 하실??");
+                    builder.setPositiveButton("예",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
 
+                                }
+                            });
+                    builder.setNegativeButton("아니오",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                    builder.show();
+                }
+            });
+        }
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("About")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Inform")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Review")));

@@ -5,6 +5,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -17,10 +18,15 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.meal.Activity.MenuDetailActivity;
+import com.example.meal.Activity.ServiceActivity;
+import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Activity.WalletActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 
 public class CardWalletView extends RelativeLayout {
@@ -32,7 +38,7 @@ public class CardWalletView extends RelativeLayout {
     public CardWalletView(Context context, List<CardView > cardViews) {
         super(context);
         mCardViews = cardViews;
-        mCardOffset = 60;
+        mCardOffset = 70;
         initView();
     }
 
@@ -63,7 +69,7 @@ public class CardWalletView extends RelativeLayout {
     private void initView() {
         //inflate(getContext(), R.layout.layout_cards_container, this);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        //setGravity(Gravity.CENTER);
+        setGravity(Gravity.CENTER);
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,22 +85,31 @@ public class CardWalletView extends RelativeLayout {
 
     private void initCardsWallet() {
         if (mCardViews != null) {
-            for (int i = mCardViews.size() - 1; i >= 0; i--) {
-                final View cardView = mCardViews.get(i);
-                cardView.setTag(i);
+            for(int num = mCardViews.size()-1; num>-1; num--) {
+                final View cardView = mCardViews.get(num);
+                cardView.setTag(num);
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (!mIsPresentingCards) {
                             enterPresentingCardMode();
+                            moveDowns();
+                            final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 50);
+                            translationY.start();
                         }
-                        moveDowns();
-                        final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 50);
-                        translationY.start();
+                        else{
+                            if(cardView.getY()==50) {
+                                Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                                TodayMenuActivity.mode = 3;
+                                getContext().getApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            }
+                            else
+                                exitPresentingCardMode();
+                        }
                     }
                 });
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                final int offset = i * convertDpToPixel(mCardOffset, getContext());
+                final int offset = num * convertDpToPixel(mCardOffset, getContext());
                 params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 params.setMargins(0, 0, 0, offset);
                 addView(cardView, params);
