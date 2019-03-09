@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -98,6 +99,10 @@ public class DetailFragment extends Fragment {
             });
         }
 
+
+
+
+
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,13 +111,18 @@ public class DetailFragment extends Fragment {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 테두리 지움
                 dialog.show();
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        (6*10)/7, ViewGroup.LayoutParams.MATCH_PARENT);
+                WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+                 params.x= -397;
+                 params.y=50;
+                dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
                 String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
                 final VideoView videoview = (VideoView) dialog.findViewById(R.id.vv);
                 ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
                 videoview.setVideoURI(Uri.parse(uriPath));
+                videoview.setZOrderOnTop(true);
                 videoview.start();
             }
         });
