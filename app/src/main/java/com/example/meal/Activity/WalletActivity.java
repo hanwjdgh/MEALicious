@@ -52,9 +52,9 @@ public class WalletActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         menu.getItem(0).getSubMenu().getItem(ServiceActivity.check_lan).setChecked(true);
-        menu.getItem(0).setTitle(ServiceActivity.lan[ServiceActivity.check_lan]);
+        menu.getItem(0).setTitle("language");
         for(int i=0; i<4; i++)
-            menu.getItem(0).getSubMenu().getItem(i).setTitle(ServiceActivity.menu_title[ServiceActivity.check_lan][i]);
+            menu.getItem(0).getSubMenu().getItem(i).setTitle(ServiceActivity.menu_title[i]);
         return true;
     }
 
