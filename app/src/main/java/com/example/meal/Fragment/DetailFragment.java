@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.ColorDrawable;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -25,14 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
 import com.example.meal.R;
 
 public class DetailFragment extends Fragment {
-    public ViewPager mViewPager;
     private Context mContext;
     TabLayout mTaplayout;
     ViewPager mViewpager;
@@ -88,7 +85,7 @@ public class DetailFragment extends Fragment {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     getActivity().finish();
-//                                    ((MenuDetailActivity)v.getContext()).finish();
+                                    getActivity().overridePendingTransition(0,0);
                                 }
                             });
                     builder.setNegativeButton("아니오",
@@ -100,10 +97,6 @@ public class DetailFragment extends Fragment {
                 }
             });
         }
-
-
-
-
 
         video.setOnClickListener(new View.OnClickListener() {
             @Override

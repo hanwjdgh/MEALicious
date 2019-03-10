@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.meal.Fragment.MenuDetailFragment;
 import com.example.meal.R;
@@ -26,13 +25,13 @@ public class MenuDetailActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public void onBackPressed(){
         setResult(1);
         super.onBackPressed();
         overridePendingTransition(0,0);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);

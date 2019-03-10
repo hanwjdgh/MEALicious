@@ -1,6 +1,5 @@
 package com.example.meal.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.BitmapDrawable;
@@ -8,14 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.meal.Activity.MainActivity;
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Fragment.DetailFragment;
 import com.example.meal.MenuItem;
@@ -40,8 +37,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
 
     @Override
     public void onBindViewHolder(final OrderAdapter.HorizontalViewHolder holder, int position) {
-        MenuItem data = list.get(position);
-
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +63,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 ((MenuDetailActivity)v.getContext()).finish();
+                                ((MenuDetailActivity)v.getContext()).overridePendingTransition(0,0);
                             }
                         });
                 builder.setNegativeButton("아니오",
