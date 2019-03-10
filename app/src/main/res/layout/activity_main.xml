@@ -7,13 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.MainActivity">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/main_image"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--android:src="@drawable/main_animation" />-->
-
     <ImageSwitcher
         android:id="@+id/main_image"
         android:scaleType="centerCrop"
@@ -47,7 +40,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/chinese" />
-
     <ImageView
         android:layout_toLeftOf="@+id/button3"
         android:id="@+id/button4"

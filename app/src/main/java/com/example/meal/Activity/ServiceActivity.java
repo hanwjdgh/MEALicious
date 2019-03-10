@@ -13,18 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.R;
 
 public class ServiceActivity extends AppCompatActivity {
     public static String menu_title[]={"한국어","English","汉语","日本語"};
-    public static String lan = "Language";
     private Context mContext;
-
     public static int check_lan = 0;
-
     public static ViewPager mViewPager;
     public static  ContentsPagerAdapter mContentPagerAdapter;
     TabLayout mTaplayout;
@@ -33,6 +29,7 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
+
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,6 +77,7 @@ public class ServiceActivity extends AppCompatActivity {
         txt_name.setTextColor(Color.WHITE);
         return tabView;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -127,6 +125,7 @@ public class ServiceActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -141,10 +140,6 @@ public class ServiceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-//        int curItem = mViewPager.getCurrentItem();
-//        if(curItem!=0)
-//            mViewPager.setCurrentItem(0,true);
-//        else
         super.onBackPressed();
         overridePendingTransition(0,0);
     }

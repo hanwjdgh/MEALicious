@@ -5,7 +5,6 @@ import com.example.meal.CardWalletView;
 import com.example.meal.R;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WalletActivity extends AppCompatActivity {
-
     private CardWalletView mCardWalletView;
 
     @Override
@@ -47,6 +45,7 @@ public class WalletActivity extends AppCompatActivity {
             overridePendingTransition(0,0);
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -94,6 +93,7 @@ public class WalletActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
