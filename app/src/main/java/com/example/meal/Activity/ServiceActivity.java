@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +44,7 @@ public class ServiceActivity extends AppCompatActivity {
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("주문하기")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("소식")));
 
+
         mViewPager = findViewById(R.id.pager_content);
         mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
         mViewPager.setOffscreenPageLimit(3);
@@ -51,6 +53,7 @@ public class ServiceActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
         mViewPager.setCurrentItem(SelectActivity.s_num);
         TextView t = mTaplayout.getTabAt(SelectActivity.s_num).getCustomView().findViewById(R.id.txt_name);
+        t.setTypeface(null, Typeface.BOLD);
         t.setTextColor(Color.parseColor("#646464"));
         mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -59,6 +62,7 @@ public class ServiceActivity extends AppCompatActivity {
                 mViewPager.setCurrentItem(tab.getPosition());
                 View v = tab.getCustomView();
                 TextView t = v.findViewById(R.id.txt_name);
+                t.setTypeface(null, Typeface.BOLD);
                 t.setTextColor(Color.parseColor("#646464"));
             }
 
@@ -66,6 +70,7 @@ public class ServiceActivity extends AppCompatActivity {
             public void onTabUnselected(TabLayout.Tab tab) {
                 View v = tab.getCustomView();
                 TextView t = v.findViewById(R.id.txt_name);
+                t.setTextSize(27);
                 t.setTextColor(Color.parseColor("#45FCFBFB"));
             }
 
@@ -81,6 +86,7 @@ public class ServiceActivity extends AppCompatActivity {
         TextView txt_name = tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
         txt_name.setTextSize(27);
+
         return tabView;
     }
 
@@ -90,7 +96,7 @@ public class ServiceActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         menu.getItem(0).getSubMenu().getItem(check_lan).setChecked(true);
         menu.getItem(0).setTitle("language");
-        for(int i=0; i<4; i++)
+        for (int i = 0; i < 4; i++)
             menu.getItem(0).getSubMenu().getItem(i).setTitle(menu_title[i]);
         return true;
     }
@@ -98,10 +104,11 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         item.setChecked(true);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                ;
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
@@ -135,7 +142,7 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -145,8 +152,8 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 }
