@@ -18,11 +18,11 @@ import com.example.meal.Adapter.ContentsPagerAdapter;
 import com.example.meal.R;
 
 public class ServiceActivity extends AppCompatActivity {
-    public static String menu_title[]={"한국어","English","汉语","日本語"};
+    public static String menu_title[] = {"한국어", "English", "汉语", "日本語"};
     private Context mContext;
     public static int check_lan = 0;
     public static ViewPager mViewPager;
-    public static  ContentsPagerAdapter mContentPagerAdapter;
+    public static ContentsPagerAdapter mContentPagerAdapter;
     TabLayout mTaplayout;
 
     @Override
@@ -43,6 +43,7 @@ public class ServiceActivity extends AppCompatActivity {
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("주문하기")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("소식")));
 
+
         mViewPager = findViewById(R.id.pager_content);
         mContentPagerAdapter = new ContentsPagerAdapter(getSupportFragmentManager(), mTaplayout.getTabCount());
         mViewPager.setOffscreenPageLimit(3);
@@ -55,6 +56,7 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
@@ -74,7 +76,7 @@ public class ServiceActivity extends AppCompatActivity {
         TextView txt_name = tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
         txt_name.setTextSize(27);
-        txt_name.setTextColor(Color.WHITE);
+//        txt_name.setTextColor(Color.WHITE);
         return tabView;
     }
 
@@ -84,7 +86,7 @@ public class ServiceActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         menu.getItem(0).getSubMenu().getItem(check_lan).setChecked(true);
         menu.getItem(0).setTitle("language");
-        for(int i=0; i<4; i++)
+        for (int i = 0; i < 4; i++)
             menu.getItem(0).getSubMenu().getItem(i).setTitle(menu_title[i]);
         return true;
     }
@@ -92,10 +94,11 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         item.setChecked(true);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                ;
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
@@ -129,7 +132,7 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -139,8 +142,8 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 }
