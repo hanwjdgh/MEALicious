@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -33,6 +34,11 @@ import java.util.List;
 
 public class MenuFragment extends Fragment {
     private String list[] = {"한국","미국","일본","중국","러시아", "호주","필리핀","영국"};
+    String inform[][] = {{"오후 3:50","ICN","1시간 30분","오후 5:20","FUK"},
+            {"오전 10:00","ICN","14시간","오전 11:00","JFK"},
+            {"오전 10:50","ICN","2시간 5분","오전 11:55","PVG"},
+            {"오전 8:30","ICN","4시간 45분","오후 12:15","CEB"},
+            {"오후 12:30","ICN","2시간 45분","오후 4:15","VVO"}};
     FloatingActionButton floatingActionButton;
     AppBarLayout appbarLayout;
     TextView textView, dateView, dateView2;
@@ -137,6 +143,8 @@ public class MenuFragment extends Fragment {
                     String str2 = autoCompleteTextView2.getText().toString();
                     String str3 = dateView.getText().toString();
                     String str4 = dateView2.getText().toString();
+                    String strdate = str3;
+                    String findate = str4;
 
                     appbarLayout.setExpanded(false);
                     if(str.length() > 0 && str2.length() > 0) {
@@ -149,15 +157,16 @@ public class MenuFragment extends Fragment {
 
                         if(round!=0) {
                             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                            layoutManager.setOrientation(LinearLayout.VERTICAL);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setLayoutManager(layoutManager);
                             List<Item> items = new ArrayList<>();
                             Item[] item = new Item[ITEM_SIZE];
-                            item[0] = new Item(R.drawable.korean, "대한항공","(KAL)");
-                            item[1] = new Item(R.drawable.delta, "델타항공","(DAL)");
-                            item[2] = new Item(R.drawable.asiana, "아시아나항공","(AAR)");
-                            item[3] = new Item(R.drawable.korean, "대한항공","(KAL)");
-                            item[4] = new Item(R.drawable.delta, "델타항공","(DAL)");
+                            item[0] = new Item(R.drawable.korean, "대한항공","(KAL)",inform[0],strdate, findate);
+                            item[1] = new Item(R.drawable.delta, "델타항공","(DAL)",inform[1],strdate, findate);
+                            item[2] = new Item(R.drawable.asiana, "아시아나항공","(AAR)",inform[2],strdate, findate);
+                            item[3] = new Item(R.drawable.korean, "대한항공","(KAL)",inform[3],strdate, findate);
+                            item[4] = new Item(R.drawable.delta, "델타항공","(DAL)",inform[4],strdate, findate);
 
                             for (int i = 0; i < ITEM_SIZE; i++)
                                 items.add(item[i]);
