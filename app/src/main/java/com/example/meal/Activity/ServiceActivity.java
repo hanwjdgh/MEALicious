@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,7 @@ public class ServiceActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
         mViewPager.setCurrentItem(SelectActivity.s_num);
         TextView t = mTaplayout.getTabAt(SelectActivity.s_num).getCustomView().findViewById(R.id.txt_name);
+        t.setTypeface(null, Typeface.BOLD);
         t.setTextColor(Color.parseColor("#646464"));
         mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -60,14 +62,15 @@ public class ServiceActivity extends AppCompatActivity {
                 mViewPager.setCurrentItem(tab.getPosition());
                 View v = tab.getCustomView();
                 TextView t = v.findViewById(R.id.txt_name);
+                t.setTypeface(null, Typeface.BOLD);
                 t.setTextColor(Color.parseColor("#646464"));
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 View v = tab.getCustomView();
                 TextView t = v.findViewById(R.id.txt_name);
+                t.setTextSize(27);
                 t.setTextColor(Color.parseColor("#45FCFBFB"));
             }
 
