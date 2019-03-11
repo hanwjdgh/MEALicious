@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/dtext"
@@ -27,7 +27,9 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="570dp"
+                android:scrollbarSize="5dp"
+                android:scrollbarThumbVertical="@color/colorWallet"
                 android:fadeScrollbars="false"
                 android:scrollbars="horizontal" />
         </LinearLayout>
