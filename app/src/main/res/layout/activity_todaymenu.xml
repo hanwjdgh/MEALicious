@@ -26,13 +26,15 @@
             android:layout_height="wrap_content"
             android:text="인천국제공항 - 가고시마행"
             android:textSize="25dp" />
-        <include
+
+        <LinearLayout
             android:id="@+id/inc"
             android:layout_below="@+id/textView1"
             android:layout_marginTop="20dp"
-            layout="@layout/item_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -56,12 +58,14 @@
             android:layout_height="wrap_content"
             android:text="가고시마행 - 인천국제공항"
             android:textSize="25dp" />
-        <include
+        <LinearLayout
             android:id="@+id/inc1"
+            android:layout_below="@+id/textView3"
             android:layout_marginTop="20dp"
-            layout="@layout/item_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

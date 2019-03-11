@@ -7,9 +7,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
-        android:layout_width="match_parent"
+        android:layout_width="1200dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:layout_gravity="center"
         card_view:cardElevation="0dp"
         card_view:cardBackgroundColor="@android:color/transparent"
         card_view:cardCornerRadius="5dp">
@@ -89,7 +90,7 @@
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="890dp"
+                        android:layout_marginLeft="880dp"
                         android:layout_marginTop="20dp"
                         android:text="1시간"
                         android:textColor="#646464"
@@ -108,6 +109,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:layout_marginTop="10dp"
                     android:layout_below="@+id/bliner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -170,7 +172,7 @@
                         android:id="@+id/time1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="890dp"
+                        android:layout_marginLeft="880dp"
                         android:layout_marginTop="20dp"
                         android:text="1시간"
                         android:textColor="#646464"
@@ -180,8 +182,8 @@
                         android:id="@+id/finishtext1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="1100dp"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="1100dp"
                         android:text="오전 11:50\nICN"
                         android:textColor="#646464"
                         android:textSize="20dp" />
