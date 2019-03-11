@@ -50,16 +50,23 @@ public class ServiceActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
         mViewPager.setCurrentItem(SelectActivity.s_num);
+        TextView t = mTaplayout.getTabAt(SelectActivity.s_num).getCustomView().findViewById(R.id.txt_name);
+        t.setTextColor(Color.parseColor("#646464"));
         mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
+                View v = tab.getCustomView();
+                TextView t = v.findViewById(R.id.txt_name);
+                t.setTextColor(Color.parseColor("#646464"));
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                View v = tab.getCustomView();
+                TextView t = v.findViewById(R.id.txt_name);
+                t.setTextColor(Color.parseColor("#45FCFBFB"));
             }
 
             @Override
@@ -74,7 +81,6 @@ public class ServiceActivity extends AppCompatActivity {
         TextView txt_name = tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
         txt_name.setTextSize(27);
-        txt_name.setTextColor(Color.WHITE);
         return tabView;
     }
 
