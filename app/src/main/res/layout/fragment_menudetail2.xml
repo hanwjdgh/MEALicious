@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
             android:id="@+id/dtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="60dp"
             android:text="메뉴 클릭시 자세한 사항을 안내 받으실 수 있습니다."
             android:textSize="20dp" />
@@ -28,9 +28,10 @@
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbarSize="5dp"
+                android:scrollbarSize="7dp"
+                android:paddingLeft="30dp"
                 android:scrollbarThumbVertical="@color/colorWallet"
-
+                android:clipToPadding="false"
                 android:fadeScrollbars="false"
                 android:scrollbars="horizontal" />
 

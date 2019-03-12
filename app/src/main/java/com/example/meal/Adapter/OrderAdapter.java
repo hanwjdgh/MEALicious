@@ -3,8 +3,12 @@ package com.example.meal.Adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +19,7 @@ import android.widget.ImageView;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Fragment.DetailFragment;
+import com.example.meal.Item;
 import com.example.meal.MenuItem;
 import com.example.meal.R;
 
@@ -35,8 +40,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
         return holder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(final OrderAdapter.HorizontalViewHolder holder, int position) {
+        MenuItem data = list.get(position);
+
+        holder.description.setImageResource(data.getName());
+        holder.menu.setImageResource(data.getImage());
+        holder.menu.getLayoutParams().height = 500;
+        holder.menu.getLayoutParams().width = 800;
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

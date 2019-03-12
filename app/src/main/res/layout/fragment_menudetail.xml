@@ -4,14 +4,14 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/dtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="60dp"
             android:text="메뉴 클릭시 자세한 사항을 안내 받으실 수 있습니다."
             android:textSize="20dp" />
@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="550dp"
             android:layout_below="@+id/dtext"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -27,11 +27,11 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="570dp"
-                android:scrollbarSize="5dp"
-                android:scrollbarThumbVertical="@color/colorWallet"
+                android:layout_height="match_parent"
+                android:paddingLeft="30dp"
                 android:fadeScrollbars="false"
-                android:scrollbars="horizontal" />
+                android:clipToPadding="false"
+                android:scrollbars="horizontal"/>
         </LinearLayout>
 
     </RelativeLayout>
