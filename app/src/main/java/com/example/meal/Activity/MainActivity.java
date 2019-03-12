@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 switch (animationCounter++) {
                     case 1:
-                        imageSwitcher.setImageResource(R.drawable.main_image_1);
+                        imageSwitcher.setImageResource(R.drawable.main_image1);
                         break;
                     case 2:
-                        imageSwitcher.setImageResource(R.drawable.main_image_2);
+                        imageSwitcher.setImageResource(R.drawable.main_image2);
                         break;
                     case 3:
-                        imageSwitcher.setImageResource(R.drawable.main_image_3);
+                        imageSwitcher.setImageResource(R.drawable.main_image3);
                         break;
                 }
                 animationCounter %= 4;

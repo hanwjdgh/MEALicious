@@ -12,52 +12,52 @@
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageView
-        android:id="@+id/button1"
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_alignRight="@id/main_image"
-        android:clickable="true"
-        android:src="@drawable/site" />
-    <ImageView
-        android:layout_toLeftOf="@+id/button1"
-        android:id="@+id/button2"
-        android:clickable="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="70dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/japanese" />
-    <ImageView
-        android:layout_toLeftOf="@+id/button2"
-        android:id="@+id/button3"
-        android:clickable="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/chinese" />
-    <ImageView
-        android:layout_toLeftOf="@+id/button3"
-        android:id="@+id/button4"
-        android:clickable="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/english" />
-    <ImageView
-        android:layout_toLeftOf="@+id/button4"
-        android:id="@+id/button5"
-        android:clickable="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/korean_selected" />
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignRight="@id/main_image">
+        <TableRow>
+            <ImageView
+                android:id="@+id/button5"
+                android:clickable="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/korean_selected" />
+            <ImageView
+                android:id="@+id/button4"
+                android:clickable="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/english" />
+            <ImageView
+                android:id="@+id/button3"
+                android:clickable="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/chinese" />
+
+            <ImageView
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/japanese" />
+
+            <ImageView
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/main_image"
+                android:clickable="true"
+                android:src="@drawable/site" />
+        </TableRow>
+    </TableLayout>
 
     <com.tomer.fadingtextview.FadingTextView
         android:layout_alignBottom="@id/main_image"
