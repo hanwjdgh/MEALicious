@@ -66,7 +66,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="650dp"
+                        android:layout_marginLeft="600dp"
                         android:layout_centerVertical="true"
                         android:orientation="vertical">
                         <TextView
@@ -90,7 +90,7 @@
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="880dp"
+                        android:layout_marginLeft="820dp"
                         android:layout_marginTop="20dp"
                         android:text="1시간"
                         android:textColor="#646464"
@@ -100,7 +100,7 @@
                         android:id="@+id/finishtext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="1100dp"
+                        android:layout_marginLeft="1040dp"
                         android:layout_centerVertical="true"
                         android:text="오전 10:50\nJFK"
                         android:textColor="#646464"
@@ -148,7 +148,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="650dp"
+                        android:layout_marginLeft="600dp"
                         android:layout_centerVertical="true"
                         android:orientation="vertical">
                         <TextView
@@ -172,7 +172,7 @@
                         android:id="@+id/time1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="880dp"
+                        android:layout_marginLeft="820dp"
                         android:layout_marginTop="20dp"
                         android:text="1시간"
                         android:textColor="#646464"
@@ -183,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="1100dp"
+                        android:layout_marginLeft="1040dp"
                         android:text="오전 11:50\nICN"
                         android:textColor="#646464"
                         android:textSize="20dp" />
