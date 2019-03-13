@@ -39,7 +39,7 @@ public class ServiceActivity extends AppCompatActivity {
         mContext = getApplicationContext();
         mTaplayout = findViewById(R.id.layout_tab);
 
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("서비스")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("서비스 소개")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("오늘의 메뉴")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("주문하기")));
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("소식")));
