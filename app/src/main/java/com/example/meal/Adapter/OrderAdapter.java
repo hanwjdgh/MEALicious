@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalViewHolder>{
     private ArrayList<MenuItem> list;
     Context context;
+    int i = 0;
 
     public void setData(Context context, ArrayList<MenuItem> lst){
         this.context = context;
@@ -66,24 +67,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
                         .commit();
             }
         });
-        holder.order.setOnClickListener(new View.OnClickListener() {
+
+        holder.checkcheck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setMessage("주문 하실??");
-                builder.setPositiveButton("예",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                ((MenuDetailActivity)v.getContext()).finish();
-                                ((MenuDetailActivity)v.getContext()).overridePendingTransition(0,0);
-                            }
-                        });
-                builder.setNegativeButton("아니오",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                builder.show();
+            public void onClick(View v) {
+                i = 1 - i;
+
+                if (i == 0) {
+                    holder.checkcheck.setImageResource(R.drawable.unchecked);
+                } else {
+                    holder.checkcheck.setImageResource(R.drawable.checked);
+                }
             }
         });
     }
@@ -95,13 +89,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
 
     class HorizontalViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView description,menu, order;
+        ImageView description,menu,checkcheck;
 
         public HorizontalViewHolder(View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.textview);
             menu = itemView.findViewById(R.id.imageview);
-            order = itemView.findViewById(R.id.order);
+            checkcheck = itemView.findViewById(R.id.checkcheck);
         }
     }
 }

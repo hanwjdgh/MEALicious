@@ -28,7 +28,7 @@
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbarSize="7dp"
+                android:scrollbarSize="3dp"
                 android:paddingLeft="30dp"
                 android:scrollbarThumbVertical="@color/colorWallet"
                 android:clipToPadding="false"

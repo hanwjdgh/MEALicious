@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="500dp"
             android:layout_below="@+id/dtext"
             android:layout_gravity="center"
             android:orientation="horizontal">
@@ -28,11 +28,24 @@
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scrollbarSize="3dp"
                 android:paddingLeft="30dp"
-                android:fadeScrollbars="false"
+                android:scrollbarThumbVertical="@color/colorWallet"
                 android:clipToPadding="false"
-                android:scrollbars="horizontal"/>
+                android:fadeScrollbars="false"
+                android:scrollbars="horizontal" />
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/warning_message"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/linear"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/warning" />
 
     </RelativeLayout>
 
