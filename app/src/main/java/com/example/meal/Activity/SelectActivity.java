@@ -51,7 +51,7 @@ public class SelectActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s_num = 4;
+                s_num = 3;
                 Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             }
