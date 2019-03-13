@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final com.tomer.fadingtextview.FadingTextView fadingTextView = findViewById(R.id.fading_text_view);
+        fadingTextView.setTexts(new String[]{"화면을 터치해주세요      "});
 
         Animation in  = AnimationUtils.loadAnimation(this, R.anim.left_to_right_in);
         Animation out = AnimationUtils.loadAnimation(this, R.anim.left_to_right_out);
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 button4.setImageResource(R.drawable.english);
                 button3.setImageResource(R.drawable.chinese);
                 button2.setImageResource(R.drawable.japanese);
-                fadingTextView.setTexts(new String[]{"화면을 터치해주세요"});
+                fadingTextView.setTexts(new String[]{"화면을 터치해주세요      "});
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 button4.setImageResource(R.drawable.english_selected);
                 button3.setImageResource(R.drawable.chinese);
                 button2.setImageResource(R.drawable.japanese);
-                fadingTextView.setTexts(new String[]{"Touch the screen"});
+                fadingTextView.setTexts(new String[]{"Touch the screen       "});
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 button4.setImageResource(R.drawable.english);
                 button3.setImageResource(R.drawable.chinese_selected);
                 button2.setImageResource(R.drawable.japanese);
-                fadingTextView.setTexts(new String[]{"触摸屏幕"});
+                fadingTextView.setTexts(new String[]{"触摸屏幕              "});
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {

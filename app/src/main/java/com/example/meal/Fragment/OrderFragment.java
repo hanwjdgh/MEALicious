@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meal.Activity.WalletActivity;
@@ -22,6 +23,7 @@ public class OrderFragment extends Fragment {
     InputMethodManager imm;
     View v;
     ImageView confirm;
+    TextView info;
     int i = 0;
 
     @Override
@@ -33,6 +35,7 @@ public class OrderFragment extends Fragment {
         final ImageView check = view.findViewById(R.id.check);
         ImageView goNext = view.findViewById(R.id.search);
         final EditText editText = view.findViewById(R.id.passport_id_edit);
+        info = view.findViewById(R.id.info);
 
         check.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +64,22 @@ public class OrderFragment extends Fragment {
                         dialog.cancel();
                     }
                 });
-
             }
         });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i = 1 - i;
+
+                if (i == 0) {
+                    check.setImageResource(R.drawable.unchecked);
+                } else {
+                    check.setImageResource(R.drawable.checked);
+                }
+            }
+        });
+
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override

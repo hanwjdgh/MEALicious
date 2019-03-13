@@ -42,6 +42,7 @@
         android:layout_below="@+id/text"
         android:layout_marginLeft="280dp"
         android:layout_marginTop="30dp"
+        android:clickable="true"
         android:text="동의하기"
         android:textColor="#545454"
         android:textSize="30sp"

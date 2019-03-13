@@ -135,7 +135,10 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(appbarLayout.getTop()<0) {
+                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
+                    lp.height = 600;
                     appbarLayout.setExpanded(true);
+                    appbarLayout.setLayoutParams(lp);
                     textView.setText("");
                 }
                 else {
