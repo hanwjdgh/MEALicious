@@ -12,7 +12,6 @@
 
     <style name="MyTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">#646464</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="windowNoTitle">true</item>-->
