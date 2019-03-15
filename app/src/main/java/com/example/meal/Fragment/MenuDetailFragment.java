@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.ServiceActivity;
@@ -25,10 +26,13 @@ public class MenuDetailFragment extends Fragment {
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     Button button;
-
+    MenuItem item;
     int menuname[] = {R.drawable.menu_1, R.drawable.menu_2, R.drawable.menu_3};
     int Images[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
     String meals[] = {"불고기 덮밥", "카레 덮밥", "비빔밥"};
+    DetailAdapter detailAdapter;
+    OrderAdapter orderAdapter;
+    ArrayList<MenuItem> items;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class MenuDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view;
+        final ArrayList<MenuItem> items = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+            items.add(new MenuItem(menuname[i], Images[i], meals[i]));
+
         if (TodayMenuActivity.mode == 1 || TodayMenuActivity.mode == 3) {
             view = inflater.inflate(R.layout.fragment_menudetail2, container, false);
             if (TodayMenuActivity.mode == 1) {
@@ -61,8 +69,12 @@ public class MenuDetailFragment extends Fragment {
                         builder.setPositiveButton("예",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        ((MenuDetailActivity)v.getContext()).finish();
-                                        ((MenuDetailActivity)v.getContext()).overridePendingTransition(0,0);
+                                        if(orderAdapter.selectedPosition != -1) {
+                                            item = items.get(orderAdapter.selectedPosition);
+                                            ((MenuDetailActivity) v.getContext()).finish();
+                                            ((MenuDetailActivity) v.getContext()).overridePendingTransition(0, 0);
+                                            Toast.makeText(getContext(), item.getMeal(), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 });
                         builder.setNegativeButton("아니오",
@@ -86,25 +98,15 @@ public class MenuDetailFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         if (TodayMenuActivity.mode != 3) {
-            DetailAdapter mAdapter = new DetailAdapter();
+            detailAdapter = new DetailAdapter();
 
-            ArrayList<MenuItem> items = new ArrayList<>();
-            for (int i = 0; i < 3; i++)
-                items.add(new MenuItem(menuname[i], Images[i], meals[i]));
-
-
-            mAdapter.setData(getActivity().getApplicationContext(), items);
-            recyclerView.setAdapter(mAdapter);
+            detailAdapter.setData(getActivity().getApplicationContext(), items);
+            recyclerView.setAdapter(detailAdapter);
         } else {
-            OrderAdapter mAdapter = new OrderAdapter();
+            orderAdapter = new OrderAdapter();
 
-            ArrayList<MenuItem> items = new ArrayList<>();
-            for (int i = 0; i < 3; i++)
-                items.add(new MenuItem(menuname[i], Images[i],meals[i]));
-
-
-            mAdapter.setData(getActivity().getApplicationContext(), items);
-            recyclerView.setAdapter(mAdapter);
+            orderAdapter.setData(getActivity().getApplicationContext(), items);
+            recyclerView.setAdapter(orderAdapter);
         }
         return view;
     }
