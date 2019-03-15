@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.meal.Adapter.RecyclerAdapter;
 import com.example.meal.Item;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuFragment extends Fragment {
-    private String list[] = {"한국","미국","일본","중국","러시아", "호주","필리핀","영국"};
+    private String list[] = {"인천","샌프란시스코","도쿄","베이징","뉴욕", "다낭","마닐라","런던"};
     String inform[][] = {{"오후 3:50","ICN","1시간 30분","오후 5:20","FUK"},
             {"오전 10:00","ICN","14시간","오전 11:00","JFK"},
             {"오전 10:50","ICN","2시간 5분","오전 11:55","PVG"},
@@ -131,53 +132,62 @@ public class MenuFragment extends Fragment {
         };
         radioGroup.setOnCheckedChangeListener(rl);
 
+
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(appbarLayout.getTop()<0) {
-                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
-                    lp.height = 600;
-                    appbarLayout.setExpanded(true);
-                    appbarLayout.setLayoutParams(lp);
-                    textView.setText("");
+                if(autoCompleteTextView1.getText().toString().equals("")){
+                    Toast.makeText(getContext(),"출발지를 입력해주세요", Toast.LENGTH_LONG).show();
+                }
+                else if(autoCompleteTextView2.getText().toString().equals("")){
+                    Toast.makeText(getContext(),"도착지를 입력해주세요", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    String str = autoCompleteTextView1.getText().toString();
-                    String str2 = autoCompleteTextView2.getText().toString();
-                    String str3 = dateView.getText().toString();
-                    String str4 = dateView2.getText().toString();
-                    String strdate = str3;
-                    String findate = str4;
+                    if (appbarLayout.getTop() < 0) {
+                        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
+                        lp.height = 600;
+                        appbarLayout.setExpanded(true);
+                        appbarLayout.setLayoutParams(lp);
+                        textView.setText("");
+                    } else {
+                        String str = autoCompleteTextView1.getText().toString();
+                        String str2 = autoCompleteTextView2.getText().toString();
+                        String str3 = dateView.getText().toString();
+                        String str4 = dateView2.getText().toString();
+                        String strdate = str3;
+                        String findate = str4;
 
-                    appbarLayout.setExpanded(false);
-                    if(str.length() > 0 && str2.length() > 0) {
-                        if(str4.equals("")){
-                            textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일");
+                        appbarLayout.setExpanded(false);
+                        if (str.length() > 0 && str2.length() > 0) {
+                            if (str4.equals("")) {
+                                textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일");
 
-                        }else {
-                            textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
+                            } else {
+                                textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
+                            }
+
+                            if (round != 0) {
+                                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                                layoutManager.setOrientation(LinearLayout.VERTICAL);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setLayoutManager(layoutManager);
+                                List<Item> items = new ArrayList<>();
+                                Item[] item = new Item[ITEM_SIZE];
+                                item[0] = new Item(R.drawable.korean, "대한항공", "(KAL)", inform[0], strdate, findate);
+                                item[1] = new Item(R.drawable.delta, "델타항공", "(DAL)", inform[1], strdate, findate);
+                                item[2] = new Item(R.drawable.asiana, "아시아나항공", "(AAR)", inform[2], strdate, findate);
+                                item[3] = new Item(R.drawable.jejuair, "제주항공", "(7C)", inform[3], strdate, findate);
+                                item[4] = new Item(R.drawable.airseoul, "에어서울항공", "(RS)", inform[4], strdate, findate);
+
+                                for (int i = 0; i < ITEM_SIZE; i++)
+                                    items.add(item[i]);
+
+                                recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(), items, R.layout.fragment_menu, round));
+                            }
                         }
 
-                        if(round!=0) {
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                            layoutManager.setOrientation(LinearLayout.VERTICAL);
-                            recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(layoutManager);
-                            List<Item> items = new ArrayList<>();
-                            Item[] item = new Item[ITEM_SIZE];
-                            item[0] = new Item(R.drawable.korean, "대한항공","(KAL)",inform[0],strdate, findate);
-                            item[1] = new Item(R.drawable.delta, "델타항공","(DAL)",inform[1],strdate, findate);
-                            item[2] = new Item(R.drawable.asiana, "아시아나항공","(AAR)",inform[2],strdate, findate);
-                            item[3] = new Item(R.drawable.korean, "대한항공","(KAL)",inform[3],strdate, findate);
-                            item[4] = new Item(R.drawable.delta, "델타항공","(DAL)",inform[4],strdate, findate);
-
-                            for (int i = 0; i < ITEM_SIZE; i++)
-                                items.add(item[i]);
-
-                            recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(), items, R.layout.fragment_menu, round));
-                        }
                     }
-
                 }
             }
         });
