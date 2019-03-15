@@ -70,6 +70,7 @@ public class TodayMenuActivity extends AppCompatActivity {
         }
 
         else{
+
             textView2 =findViewById(R.id.textView2);
             textView3 = findViewById(R.id.textView3);
             textView2.setText(finish.substring(5, 7) + "월 " + finish.substring(8, 10) + "일 "+getDateDay(finish,"yyyy-MM-dd"));
