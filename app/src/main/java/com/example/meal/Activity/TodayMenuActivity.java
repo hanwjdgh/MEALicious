@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.TreeMap;
 
 public class TodayMenuActivity extends AppCompatActivity {
-    LinearLayout linearLayout1, linearLayout2;
+    RelativeLayout linearLayout1, relativeLayout2;
     RelativeLayout relativeLayout;
     TextView textView,textView1,textView2, textView3;
     String start, finish, text, air;
@@ -58,18 +58,19 @@ public class TodayMenuActivity extends AppCompatActivity {
         con[1] = inform[4];
         con1[0] = inform[4];
         con1[1] = inform[1];
-
-        linearLayout1 = findViewById(R.id.card1);
-        linearLayout2 = findViewById(R.id.card2);
+//
+//        linearLayout1 = findViewById(R.id.card1);
+        relativeLayout2 = findViewById(R.id.card2);
         relativeLayout = findViewById(R.id.rel);
 
         if(check==2) {
             relativeLayout.setGravity(Gravity.CENTER_VERTICAL);
             relativeLayout.setPadding(0,0,0,200);
-            linearLayout2.setVisibility(View.GONE);
+            relativeLayout2.setVisibility(View.GONE);
         }
 
         else{
+
             textView2 =findViewById(R.id.textView2);
             textView3 = findViewById(R.id.textView3);
             textView2.setText(finish.substring(5, 7) + "월 " + finish.substring(8, 10) + "일 "+getDateDay(finish,"yyyy-MM-dd"));
@@ -252,28 +253,28 @@ public class TodayMenuActivity extends AppCompatActivity {
         for(int i=0; i<2; i++){
             switch (contury[i]){
                 case "ICN":
-                    route += "인천국제공항";
+                    route += "인천국제공항(ICN)";
                     break;
                 case "FUK":
-                    route += "후쿠오카";
+                    route += "후쿠오카(FUK)";
                     break;
                 case "JFK":
-                    route += "뉴욕존에프케네디";
+                    route += "뉴욕(JFK)";
                     break;
                 case "PVG":
-                    route += "상하이푸동";
+                    route += "상하이푸동(PVG)";
                     break;
                 case "CEB":
-                    route += "세부";
+                    route += "세부(CEB)";
                     break;
                 case "VVO":
-                    route += "블라디보스토크";
+                    route += "블라디보스토크(VVO)";
                     break;
             }
             if(i==0)
-                route += " - ";
-            else
-                route +="행";
+                route += " -> ";
+//            else
+//                route +="행";
         }
         return route;
     }
