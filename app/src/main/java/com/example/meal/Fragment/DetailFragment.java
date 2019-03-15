@@ -107,10 +107,9 @@ public class DetailFragment extends Fragment {
                 dialog.show();
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-                //params.x= -397;
                 params.y=35;
                 params.width = 1500;
-                //params.height = 700;
+
                 dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
@@ -120,7 +119,7 @@ public class DetailFragment extends Fragment {
                 videoview.setVideoURI(Uri.parse(uriPath));
                 videoview.setZOrderOnTop(true);
                 LinearLayout.LayoutParams pp = (LinearLayout.LayoutParams) videoview.getLayoutParams();
-                //pp.weight = 974;
+
                 pp.height = 900;
                 videoview.setLayoutParams(pp);
                 videoview.start();
