@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:theme="@style/MyTheme">
+        android:background="#00000000"
+        >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout01"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimaryDark"
+            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -28,10 +29,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
+                android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/search"
                 app:layout_collapseMode="parallax" />
-
             <RadioGroup
                 android:id="@+id/radio"
                 android:layout_width="200dp"
@@ -125,7 +126,6 @@
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -146,6 +146,14 @@
         app:layout_anchor="@id/collapsingToolbarLayout01"
         app:layout_anchorGravity="bottom|end"
         app:maxImageSize="60dp" />
+
+    <ImageView
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+    </ImageView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rv"

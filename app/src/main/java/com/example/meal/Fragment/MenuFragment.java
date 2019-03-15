@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -18,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,10 +47,12 @@ public class MenuFragment extends Fragment {
     AppBarLayout appbarLayout;
     TextView textView, dateView, dateView2;
     AutoCompleteTextView autoCompleteTextView1,autoCompleteTextView2;
-    ImageView imageView;
+    ImageView imageView,linearLayout;
     InputMethodManager imm;
     RecyclerView recyclerView;
     RadioGroup radioGroup;
+    RadioButton radioButton;
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     int round = 1;
     final int ITEM_SIZE = 5;
@@ -65,7 +70,11 @@ public class MenuFragment extends Fragment {
         autoCompleteTextView2 = view.findViewById(R.id.search2);
         recyclerView = view.findViewById(R.id.main_rv);
         radioGroup = view.findViewById(R.id.radio);
+        radioButton = view.findViewById(R.id.option2);
+        linearLayout = view.findViewById(R.id.border);
+        collapsingToolbarLayout = view. findViewById(R.id.collapsingToolbarLayout01);
 
+        linearLayout.bringToFront();
         appbarLayout.bringToFront();
 
         if (appbarLayout.getLayoutParams() != null) {
@@ -132,8 +141,12 @@ public class MenuFragment extends Fragment {
         };
         radioGroup.setOnCheckedChangeListener(rl);
 
-
-
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,20 +156,31 @@ public class MenuFragment extends Fragment {
                 else if(autoCompleteTextView2.getText().toString().equals("")){
                     Toast.makeText(getContext(),"도착지를 입력해주세요", Toast.LENGTH_LONG).show();
                 }
+                else{
+                if(appbarLayout.getTop()<0) {
+                    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
+                    lp.height = 600;
+                    appbarLayout.setExpanded(true);
+                    appbarLayout.setLayoutParams(lp);
+                    imageView.setImageResource(R.drawable.search2);
+                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    CollapsingToolbarLayout.LayoutParams ap = new CollapsingToolbarLayout.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.MATCH_PARENT);
+                    ap.setMargins(350,150,0,0);
+                    radioGroup.setLayoutParams(ap);
+                    RadioGroup.LayoutParams rp = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    rp.setMargins(122,0,0,0);
+                    radioButton.setLayoutParams(rp);
+                    linearLayout.setVisibility(View.VISIBLE);
+                    textView.setText("");
+                }
                 else {
-                    if (appbarLayout.getTop() < 0) {
-                        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
-                        lp.height = 600;
-                        appbarLayout.setExpanded(true);
-                        appbarLayout.setLayoutParams(lp);
-                        textView.setText("");
-                    } else {
-                        String str = autoCompleteTextView1.getText().toString();
-                        String str2 = autoCompleteTextView2.getText().toString();
-                        String str3 = dateView.getText().toString();
-                        String str4 = dateView2.getText().toString();
-                        String strdate = str3;
-                        String findate = str4;
+                    linearLayout.setVisibility(View.INVISIBLE);
+                    String str = autoCompleteTextView1.getText().toString();
+                    String str2 = autoCompleteTextView2.getText().toString();
+                    String str3 = dateView.getText().toString();
+                    String str4 = dateView2.getText().toString();
+                    String strdate = str3;
+                    String findate = str4;
 
                         appbarLayout.setExpanded(false);
                         if (str.length() > 0 && str2.length() > 0) {
