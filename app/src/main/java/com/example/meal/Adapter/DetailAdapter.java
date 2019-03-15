@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.meal.Fragment.DetailFragment;
 import com.example.meal.MenuItem;
@@ -39,6 +40,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
 
         holder.description.setImageResource(data.getName());
         holder.icon.setImageResource(data.getImage());
+        holder.mealName.setText(data.getMeal());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,11 +73,13 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
         ImageView icon;
         ImageView description;
         CardView cardView;
+        TextView mealName;
 
         public HorizontalViewHolder(View itemView) {
             super(itemView);
             icon = itemView.findViewById(R.id.imageview);
             description = itemView.findViewById(R.id.textview);
+            mealName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
         }
     }

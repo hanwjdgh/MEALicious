@@ -3,6 +3,7 @@ package com.example.meal;
 public class MenuItem {
     int name;
     int image;
+    String meal;
 
     public int getName() {
         return name;
@@ -12,9 +13,10 @@ public class MenuItem {
         this.name = name;
     }
 
-    public MenuItem(int name, int image) {
+    public MenuItem(int name, int image, String meal) {
         this.name = name;
         this.image = image;
+        this.meal = meal;
     }
 
     public int getImage() {
@@ -24,4 +26,13 @@ public class MenuItem {
     public void setImage(int image) {
         this.image = image;
     }
+
+    public String getMeal() {
+        return meal;
+    }
+
+    public void setMeal(String meal) {
+        this.meal = meal;
+    }
+
 }

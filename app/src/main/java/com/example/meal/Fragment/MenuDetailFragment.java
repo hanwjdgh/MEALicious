@@ -28,6 +28,7 @@ public class MenuDetailFragment extends Fragment {
 
     int menuname[] = {R.drawable.menu_1, R.drawable.menu_2, R.drawable.menu_3};
     int Images[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
+    String meals[] = {"불고기 덮밥", "카레 덮밥", "비빔밥"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,7 @@ public class MenuDetailFragment extends Fragment {
 
             ArrayList<MenuItem> items = new ArrayList<>();
             for (int i = 0; i < 3; i++)
-                items.add(new MenuItem(menuname[i], Images[i]));
+                items.add(new MenuItem(menuname[i], Images[i], meals[i]));
 
 
             mAdapter.setData(getActivity().getApplicationContext(), items);
@@ -99,7 +100,7 @@ public class MenuDetailFragment extends Fragment {
 
             ArrayList<MenuItem> items = new ArrayList<>();
             for (int i = 0; i < 3; i++)
-                items.add(new MenuItem(menuname[i], Images[i]));
+                items.add(new MenuItem(menuname[i], Images[i],meals[i]));
 
 
             mAdapter.setData(getActivity().getApplicationContext(), items);
