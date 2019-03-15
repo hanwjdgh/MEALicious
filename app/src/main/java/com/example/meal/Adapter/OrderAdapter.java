@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Fragment.DetailFragment;
@@ -29,6 +30,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     private ArrayList<MenuItem> list;
     Context context;
     int i = 0;
+    public int selectedPosition  = -1;
 
     public void setData(Context context, ArrayList<MenuItem> lst){
         this.context = context;
@@ -46,6 +48,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     public void onBindViewHolder(final OrderAdapter.HorizontalViewHolder holder, int position) {
         MenuItem data = list.get(position);
 
+        holder.mealName.setText(data.getMeal());
         holder.description.setImageResource(data.getName());
         holder.menu.setImageResource(data.getImage());
         holder.menu.getLayoutParams().height = 500;
@@ -68,18 +71,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
             }
         });
 
-        holder.checkcheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                i = 1 - i;
+        if(selectedPosition == position)
+            holder.checkcheck.setImageResource(R.drawable.checked);
+        else
+            holder.checkcheck.setImageResource(R.drawable.unchecked);
 
-                if (i == 0) {
-                    holder.checkcheck.setImageResource(R.drawable.unchecked);
-                } else {
-                    holder.checkcheck.setImageResource(R.drawable.checked);
-                }
-            }
-        });
     }
 
     @Override
@@ -90,12 +86,22 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     class HorizontalViewHolder extends RecyclerView.ViewHolder {
 
         ImageView description,menu,checkcheck;
+        TextView mealName;
 
         public HorizontalViewHolder(View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.textview);
             menu = itemView.findViewById(R.id.imageview);
             checkcheck = itemView.findViewById(R.id.checkcheck);
+            mealName = itemView.findViewById(R.id.name);
+
+            checkcheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedPosition = getLayoutPosition();
+                    notifyDataSetChanged();
+                }
+            });
         }
     }
 }

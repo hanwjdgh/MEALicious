@@ -25,6 +25,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/menu_1" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview"
+                android:textSize="30dp"
+                android:layout_marginLeft="20dp"
+                android:text = "불고기 덮밥"/>
             <ImageView
                 android:layout_below="@+id/textview"
                 android:id="@+id/imageview"
