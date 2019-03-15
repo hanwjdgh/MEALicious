@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:screenOrientation="landscape"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +22,16 @@
         </activity>
 
         <activity android:name=".Activity.ServiceActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Activity.TodayMenuActivity" />
-        <activity android:name=".Activity.MenuDetailActivity" />
-        <activity android:name=".Activity.WalletActivity"/>
-        <activity android:name=".Activity.SelectActivity"/>
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activity.TodayMenuActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activity.MenuDetailActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activity.WalletActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activity.SelectActivity"
+            android:screenOrientation="landscape"/>
 
     </application>
 
