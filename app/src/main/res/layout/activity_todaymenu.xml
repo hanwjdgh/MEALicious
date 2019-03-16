@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:id="@+id/rel">
 
     <RelativeLayout
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/nothing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="50dp"
             android:text="선택하신 항공편은 "
             android:textSize="20dp" />
@@ -23,10 +25,10 @@
             android:layout_toRightOf="@+id/nothing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="69dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
             android:text="2월 24일 일요일"
-            android:textSize="35dp" />
+            android:textSize="30dp" />
         <TextView
             android:layout_marginLeft="50dp"
             android:layout_below="@+id/textView"
@@ -35,31 +37,30 @@
             android:layout_height="wrap_content"
             android:textColor="#e9823e"
             android:text="인천국제공항 - 가고시마행"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
         <TextView
             android:layout_below="@+id/textView"
             android:layout_toRightOf="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:layout_marginLeft="10dp"
             android:text="입니다."
             android:textSize="20dp" />
         <ImageView
             android:layout_below="@+id/textView"
-
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:src="@drawable/click_today" />
         <LinearLayout
             android:id="@+id/inc"
             android:layout_below="@+id/textView1"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
         </LinearLayout>
     </RelativeLayout>
@@ -69,12 +70,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/card1">
         <TextView
             android:id="@+id/nothing2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="50dp"
             android:text="선택하신 항공편은 "
             android:textSize="20dp" />
@@ -83,10 +85,10 @@
             android:layout_toRightOf="@+id/nothing2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="69dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="2월 24일 일요일"
-            android:textSize="35dp" />
+            android:textSize="30dp" />
         <TextView
             android:layout_marginLeft="50dp"
             android:layout_below="@+id/textView2"
@@ -95,49 +97,46 @@
             android:layout_height="wrap_content"
             android:textColor="#e9823e"
             android:text="인천국제공항 - 가고시마행"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
         <TextView
             android:layout_below="@+id/textView2"
             android:layout_toRightOf="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:layout_marginLeft="10dp"
             android:text="입니다."
             android:textSize="20dp" />
         <ImageView
             android:layout_below="@+id/textView2"
-
             android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginRight="50dp"
             android:src="@drawable/click_meal" />
         <LinearLayout
             android:id="@+id/inc1"
             android:layout_below="@+id/textView3"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
         </LinearLayout>
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/card3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical">
-
         <ImageView
             android:id="@+id/banner"
-            android:layout_width="1000dp"
-            android:layout_height="500dp"
-
-            android:layout_marginLeft="100dp"
+            android:layout_width="1100dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/banner_1" />
-
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

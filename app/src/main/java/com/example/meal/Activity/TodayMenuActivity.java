@@ -24,7 +24,7 @@ import java.util.TreeMap;
 
 public class TodayMenuActivity extends AppCompatActivity {
     RelativeLayout linearLayout1, relativeLayout2;
-    RelativeLayout relativeLayout;
+    LinearLayout relativeLayout, linearLayout;
     TextView textView,textView1,textView2, textView3;
     String start, finish, text, air;
     String[] inform;
@@ -59,18 +59,27 @@ public class TodayMenuActivity extends AppCompatActivity {
         con1[0] = inform[4];
         con1[1] = inform[1];
 //
-//        linearLayout1 = findViewById(R.id.card1);
+        linearLayout1 = findViewById(R.id.card1);
         relativeLayout2 = findViewById(R.id.card2);
         relativeLayout = findViewById(R.id.rel);
+        linearLayout = findViewById(R.id.card3);
 
+        textView = findViewById(R.id.textView);
+        textView1 = findViewById(R.id.textView1);
+        viewGroup = findViewById(R.id.inc);
         if(check==2) {
-            relativeLayout.setGravity(Gravity.CENTER_VERTICAL);
-            relativeLayout.setPadding(0,0,0,200);
+            LinearLayout.LayoutParams rp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            rp.setMargins(0,150,0,0);
+            linearLayout1.setLayoutParams(rp);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0,300,0,0);
+            lp.gravity = Gravity.CENTER_HORIZONTAL;
+            linearLayout.setLayoutParams(lp);
             relativeLayout2.setVisibility(View.GONE);
+
         }
 
         else{
-
             textView2 =findViewById(R.id.textView2);
             textView3 = findViewById(R.id.textView3);
             textView2.setText(finish.substring(5, 7) + "월 " + finish.substring(8, 10) + "일 "+getDateDay(finish,"yyyy-MM-dd"));
@@ -90,7 +99,10 @@ public class TodayMenuActivity extends AppCompatActivity {
             TextView fi = myLayout.findViewById(R.id.finishtext);
             st.setText(inform[0]);
             con.setText(inform[4]);
+            RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            rp.setMargins(1230,40,0,0);
             time.setText(inform[2]);
+            time.setLayoutParams(rp);
             fi.setText(inform[3]+"\r\n"+inform[1]);
             viewGroup1.addView((myLayout));
 
@@ -104,14 +116,9 @@ public class TodayMenuActivity extends AppCompatActivity {
                 }
             });
         }
-        textView = findViewById(R.id.textView);
-        textView1 = findViewById(R.id.textView1);
-
         textView.setText(start.substring(5, 7) + "월 " + start.substring(8, 10) + "일 "+getDateDay(start,"yyyy-MM-dd"));
-
         textView1.setText(getRoute(con));
 
-        viewGroup = findViewById(R.id.inc);
         View myLayout = getLayoutInflater().inflate(R.layout.item_view, null);
         ImageView imageView = myLayout.findViewById(R.id.image);
         imageView.setImageResource(fimage);
@@ -125,7 +132,10 @@ public class TodayMenuActivity extends AppCompatActivity {
         TextView fi = myLayout.findViewById(R.id.finishtext);
         st.setText(inform[0]);
         con.setText(inform[1]);
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        rp.setMargins(1230,40,0,0);
         time.setText(inform[2]);
+        time.setLayoutParams(rp);
         fi.setText(inform[3]+"\r\n"+inform[4]);
         viewGroup.addView((myLayout));
 
@@ -272,7 +282,7 @@ public class TodayMenuActivity extends AppCompatActivity {
                     break;
             }
             if(i==0)
-                route += " -> ";
+                route += " → ";
 //            else
 //                route +="행";
         }
