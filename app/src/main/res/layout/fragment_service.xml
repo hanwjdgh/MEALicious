@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageSwitcher
+        <ImageView
             android:id="@+id/service"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,11 +24,7 @@
         android:layout_width="177dp"
         android:layout_height="115dp"
         android:layout_gravity="bottom"
-
         android:layout_marginLeft="70dp"
         android:clickable="true"
-
         android:src="@drawable/order" />
-
-
 </FrameLayout>
