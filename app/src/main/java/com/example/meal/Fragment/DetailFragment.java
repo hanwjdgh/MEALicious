@@ -28,7 +28,10 @@ import android.widget.VideoView;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
+import com.example.meal.MenuItem;
 import com.example.meal.R;
+
+import java.util.ArrayList;
 
 public class DetailFragment extends Fragment {
     private Context mContext;
@@ -49,11 +52,14 @@ public class DetailFragment extends Fragment {
         Bitmap actionTitle = null;
         Bitmap imageBitmap = null;
         String name = "";
+        int videoName = 0;
+
         int index = -1;
         if (bundle != null) {
             actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
             name = bundle.getString("NAME");
+            videoName = bundle.getInt("VIDEO");
         }
 
         final View view = inflater.inflate(R.layout.fragment_detail, container, false);
@@ -104,6 +110,8 @@ public class DetailFragment extends Fragment {
             });
         }
 
+
+        final int finalVideoName = videoName;
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +127,7 @@ public class DetailFragment extends Fragment {
                 dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
-                String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
+                String uriPath= "android.resource://" + getContext().getPackageName() + "/" + finalVideoName;
                 final VideoView videoview = (VideoView) dialog.findViewById(R.id.vv);
                 ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
                 videoview.setVideoURI(Uri.parse(uriPath));
