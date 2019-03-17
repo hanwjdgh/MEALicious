@@ -28,7 +28,10 @@ import android.widget.VideoView;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
+import com.example.meal.MenuItem;
 import com.example.meal.R;
+
+import java.util.ArrayList;
 
 public class DetailFragment extends Fragment {
     private Context mContext;
@@ -36,7 +39,8 @@ public class DetailFragment extends Fragment {
     ViewPager mViewpager;
     DetailPagerAdapter mDetailPagerAdapter;
     Button button;
-    ImageView imageView, video;
+    ImageView imageView, video, confirm,check_order_image, cancel;
+    TextView check_order_name;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,11 +53,14 @@ public class DetailFragment extends Fragment {
         Bitmap actionTitle = null;
         Bitmap imageBitmap = null;
         String name = "";
+        int videoName = 0;
+
         int index = -1;
         if (bundle != null) {
             actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
             name = bundle.getString("NAME");
+            videoName = bundle.getInt("VIDEO");
         }
 
         final View view = inflater.inflate(R.layout.fragment_detail, container, false);
@@ -68,7 +75,7 @@ public class DetailFragment extends Fragment {
         video = view.findViewById(R.id.video);
         imageView = view.findViewById(R.id.select_message);
 
-        if(TodayMenuActivity.mode == 1) {
+        if (TodayMenuActivity.mode == 1) {
             button.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.VISIBLE);
             button.setOnClickListener(new View.OnClickListener() {
@@ -78,32 +85,47 @@ public class DetailFragment extends Fragment {
                     getActivity().finish();
                 }
             });
-        }
-        else if(TodayMenuActivity.mode==3) {
+        } else if (TodayMenuActivity.mode == 3) {
             button.setVisibility(View.VISIBLE);
+            final Bitmap finalImageBitmap = imageBitmap;
+            final String finalName = name;
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setMessage("주문 하실??");
-                    builder.setPositiveButton("예",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(getContext(),((TextView) view.findViewById(R.id.menuname)).getText().toString(),Toast.LENGTH_SHORT).show();
-                                    getActivity().finish();
-                                    getActivity().overridePendingTransition(0,0);
-                                }
-                            });
-                    builder.setNegativeButton("아니오",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            });
-                    builder.show();
+                    final Dialog dialog = new Dialog(getContext());
+                    dialog.setContentView(R.layout.check_order);
+
+                    confirm = dialog.findViewById(R.id.confirm);
+                    cancel = dialog.findViewById(R.id.cancel);
+
+                    check_order_name = dialog.findViewById(R.id.check_order_name);
+                    check_order_name.setText(finalName);
+                    check_order_image = dialog.findViewById(R.id.check_order_image);
+                    check_order_image.setImageBitmap(finalImageBitmap);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 테두리 지움
+                    dialog.show();
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getContext(), ((TextView) view.findViewById(R.id.menuname)).getText().toString(), Toast.LENGTH_SHORT).show();
+                            getActivity().finish();
+                            getActivity().overridePendingTransition(0, 0);
+                        }
+                    });
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.cancel();
+                        }
+                    });
+
                 }
             });
         }
 
+
+        final int finalVideoName = videoName;
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,13 +135,13 @@ public class DetailFragment extends Fragment {
                 dialog.show();
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-                params.y=35;
+                params.y = 35;
                 params.width = 1500;
 
                 dialog.getWindow().setAttributes(params);
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 dialog.getWindow().setAttributes(lp);
-                String uriPath= "android.resource://" + getContext().getPackageName() + "/" + R.raw.roast;
+                String uriPath = "android.resource://" + getContext().getPackageName() + "/" + finalVideoName;
                 final VideoView videoview = (VideoView) dialog.findViewById(R.id.vv);
                 ((Activity) getContext()).getWindow().setFormat(PixelFormat.TRANSLUCENT);
                 videoview.setVideoURI(Uri.parse(uriPath));

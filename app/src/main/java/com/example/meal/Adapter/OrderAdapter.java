@@ -30,7 +30,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     private ArrayList<MenuItem> list;
     Context context;
     int i = 0;
-    public int selectedPosition  = -1;
+    public int selectedPosition  = 0;
 
     public void setData(Context context, ArrayList<MenuItem> lst){
         this.context = context;

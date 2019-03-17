@@ -36,7 +36,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
 
     @Override
     public void onBindViewHolder(final HorizontalViewHolder holder, int position) {
-        MenuItem data = list.get(position);
+        final MenuItem data = list.get(position);
 
         holder.description.setImageResource(data.getName());
         holder.icon.setImageResource(data.getImage());
@@ -54,6 +54,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
                 bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.icon.getDrawable()).getBitmap());
+                bundle.putInt("VIDEO", data.getVideo());
                 detailFragment.setArguments(bundle);
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 fragmentManager.beginTransaction()

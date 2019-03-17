@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/order_check" />
+
+    <LinearLayout
+        android:id="@+id/scroll"
+        android:layout_width="450dp"
+        android:layout_height="340dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp">
+
+        <TextView
+            android:id="@+id/check_order_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="주문하신 정보가 맞습니까 ?"/>
+        <ImageView
+            android:id="@+id/check_order_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/scroll"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:src="@drawable/confirm" />
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/scroll"
+        android:layout_marginLeft="285dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:src="@drawable/cancel" />
+</RelativeLayout>
