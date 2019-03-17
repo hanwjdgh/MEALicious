@@ -29,7 +29,7 @@ public class MenuDetailFragment extends Fragment {
     MenuItem item;
     int menuname[] = {R.drawable.menu_1, R.drawable.menu_2, R.drawable.menu_3};
     int Images[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
-    String meals[] = {"불고기 덮밥", "카레 덮밥", "비빔밥"};
+    String meals[] = {"불고기 덮밥", "고추장돼지 불고기", "낙지덮밥"};
     DetailAdapter detailAdapter;
     OrderAdapter orderAdapter;
     ArrayList<MenuItem> items;
