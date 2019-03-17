@@ -35,8 +35,8 @@ public class DetailFragment extends Fragment {
     TabLayout mTaplayout;
     ViewPager mViewpager;
     DetailPagerAdapter mDetailPagerAdapter;
-    Button button, video;
-    ImageView imageView;
+    Button button;
+    ImageView imageView, video;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -41,12 +41,13 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/meal_1" />
 
-            <Button
-                android:layout_below="@+id/listImage"
+            <ImageView
                 android:id="@+id/video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="video"/>
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="400dp"
+                android:layout_alignRight="@+id/listImage"
+                android:src="@drawable/video" />
 
         </RelativeLayout>
 
