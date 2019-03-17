@@ -223,7 +223,7 @@ public class MenuFragment extends Fragment {
                                 recyclerView.setLayoutManager(layoutManager);
 
                                 List<Item> items = new ArrayList<>();
-                                Item[] item = new Item[ITEM_SIZE];
+
                                 int airImage[] ={R.drawable.korean,R.drawable.delta,R.drawable.asiana,R.drawable.jejuair,R.drawable.airseoul};
                                 String airName[] = {"대한항공","델타항공","아시아나항공","제주항공","에어서울항공"};
                                 String airMark[] ={"(KAL)","(DAL)","(AAR)","(7C)","(RS)"};

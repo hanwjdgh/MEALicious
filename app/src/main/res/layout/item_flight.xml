@@ -6,71 +6,75 @@
     android:layout_height="450dp"
     card_view:cardElevation="0dp"
     card_view:cardBackgroundColor="@android:color/transparent"
-    card_view:cardMaxElevation="0dp"
-    >
+    card_view:cardMaxElevation="0dp">
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="vertical">-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="320dp"
+            android:layout_height="400dp"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/real"
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp"
+                    android:text="해당 항공편의 메뉴는"/>
+                <TextView
+                    android:layout_below="@+id/text"
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:text="생선 크림파스타"/>
+                <TextView
+                    android:layout_toRightOf="@+id/text1"
+                    android:id="@+id/text2"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp"
+                    android:text="입니다."/>
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/blank"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/blank"/>
+            <ImageView
+                android:id="@+id/order"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/order_b"/>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/asiana" />
-        <!--<LinearLayout-->
-        <!--android:id="@+id/flinear"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="항공사"-->
-        <!--android:textSize="50dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-        <!--<View-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--/>-->
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="항공편명"-->
-        <!--android:textSize="50dp"-->
-        <!--android:layout_marginRight="10dp"/>-->
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-        <!--android:id="@+id/flinear1"-->
-        <!--android:layout_marginTop="50dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="출발지"-->
-        <!--android:textSize="50dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-        <!--<View-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--/>-->
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="도착지"-->
-        <!--android:textSize="50dp"-->
-        <!--android:layout_marginRight="10dp"/>-->
-        <!--</LinearLayout>-->
-
-    <!--</LinearLayout>-->
-
+            android:src="@drawable/asiana_t1" />
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

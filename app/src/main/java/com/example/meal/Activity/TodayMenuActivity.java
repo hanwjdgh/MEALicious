@@ -31,6 +31,8 @@ public class TodayMenuActivity extends AppCompatActivity {
     String[] con = new String[2];
     String[] con1 = new String[2];
     ViewGroup viewGroup, viewGroup1;
+    ImageView imageView;
+
     int fimage;
 
     int check;
@@ -63,7 +65,12 @@ public class TodayMenuActivity extends AppCompatActivity {
         relativeLayout2 = findViewById(R.id.card2);
         relativeLayout = findViewById(R.id.rel);
         linearLayout = findViewById(R.id.card3);
+        imageView = findViewById(R.id.banner);
 
+        if(text.equals("제주항공"))
+            imageView.setImageResource(R.drawable.banner_1);
+        else
+            imageView.setImageResource(R.drawable.banner_2);
         textView = findViewById(R.id.textView);
         textView1 = findViewById(R.id.textView1);
         viewGroup = findViewById(R.id.inc);
