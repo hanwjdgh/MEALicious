@@ -1,6 +1,7 @@
 package com.example.meal.Fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -11,11 +12,12 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -38,12 +40,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuFragment extends Fragment {
-    private String list[] = {"인천","샌프란시스코","도쿄","베이징","뉴욕", "다낭","마닐라","런던"};
-    String inform[][] = {{"오후 3:50","ICN","1시간 30분","오후 5:20","FUK"},
-            {"오전 10:00","ICN","14시간","오전 11:00","JFK"},
-            {"오전 10:50","ICN","2시간 5분","오전 11:55","PVG"},
-            {"오전 8:30","ICN","4시간 45분","오후 12:15","CEB"},
-            {"오후 12:30","ICN","2시간 45분","오후 4:15","VVO"}};
+    private String list[] = {"인천","후쿠오카","상하이푸동","세부","뉴욕", "블라디보스토크"};
+    String inform[][] = {{"오후 3:50","ICN","1시간 30분","오후 5:20","FUK","후쿠오카"},
+            {"오전 10:00","ICN","1시간 30분","오전 11:30","FUK","후쿠오카"},
+            {"오전 10:25","ICN","1시간 30분","오전 11:55","FUK","후쿠오카"},
+            {"오전 9:00","ICN","14시간","오전 11:00","JFK","뉴욕"},
+            {"오전 12:00","ICN","14시간","오후 2:00","JFK","뉴욕"},
+            {"오전 10:50","ICN","2시간 5분","오전 11:55","PVG","상하이푸동"},
+            {"오전 8:30","ICN","4시간 45분","오후 12:15","CEB","세부"},
+            {"오후 12:30","ICN","2시간 45분","오후 4:15","VVO","블라디보스토크"}
+    };
     FloatingActionButton floatingActionButton;
     AppBarLayout appbarLayout;
     TextView textView, dateView, dateView2;
@@ -54,7 +60,7 @@ public class MenuFragment extends Fragment {
     RadioGroup radioGroup;
     RadioButton radioButton;
     CollapsingToolbarLayout collapsingToolbarLayout;
-
+    Toolbar toolbar;
     int round = 1;
     final int ITEM_SIZE = 5;
 
@@ -74,6 +80,7 @@ public class MenuFragment extends Fragment {
         radioButton = view.findViewById(R.id.option2);
         linearLayout = view.findViewById(R.id.border);
         collapsingToolbarLayout = view. findViewById(R.id.collapsingToolbarLayout01);
+        toolbar = view.findViewById(R.id.toolbar);
 
         linearLayout.bringToFront();
         appbarLayout.bringToFront();
@@ -92,6 +99,7 @@ public class MenuFragment extends Fragment {
 
         autoCompleteTextView1.setAdapter(new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_dropdown_item_1line,  list ));
         autoCompleteTextView2.setAdapter(new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_dropdown_item_1line,  list ));
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +169,7 @@ public class MenuFragment extends Fragment {
                     if(appbarLayout.getTop()<0) {
                         CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) appbarLayout.getLayoutParams();
 
+                        toolbar.setBackgroundColor(Color.parseColor("#00000000"));
                         lp.height = 600;
                         appbarLayout.setExpanded(true);
                         appbarLayout.setLayoutParams(lp);
@@ -172,17 +181,17 @@ public class MenuFragment extends Fragment {
                         RadioGroup.LayoutParams rp = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         rp.setMargins(122, 0, 0, 0);
                         radioButton.setLayoutParams(rp);
-                        ap =  new CollapsingToolbarLayout.LayoutParams(192, ViewGroup.LayoutParams.MATCH_PARENT);
-                        ap.setMargins(600,15,0,0);
+                        ap =  new CollapsingToolbarLayout.LayoutParams(250, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        ap.setMargins(575,280,0,0);
                         autoCompleteTextView1.setLayoutParams(ap);
-                        ap =  new CollapsingToolbarLayout.LayoutParams(192, ViewGroup.LayoutParams.MATCH_PARENT);
-                        ap.setMargins(1200,15,0,0);
+                        ap =  new CollapsingToolbarLayout.LayoutParams(250, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        ap.setMargins(1175,280,0,0);
                         autoCompleteTextView2.setLayoutParams(ap);
                         ap =  new CollapsingToolbarLayout.LayoutParams(200, 49);
-                        ap.setMargins(600,420,0,0);
+                        ap.setMargins(610,420,0,0);
                         dateView.setLayoutParams(ap);
                         ap =  new CollapsingToolbarLayout.LayoutParams(200, 49);
-                        ap.setMargins(1200,420,0,0);
+                        ap.setMargins(1210,420,0,0);
                         dateView2.setLayoutParams(ap);
 
                         linearLayout.setVisibility(View.VISIBLE);
@@ -190,6 +199,7 @@ public class MenuFragment extends Fragment {
                     }
                     else {
                         linearLayout.setVisibility(View.INVISIBLE);
+                        toolbar.setBackgroundColor(Color.parseColor("#A5A2A2"));
                         String str = autoCompleteTextView1.getText().toString();
                         String str2 = autoCompleteTextView2.getText().toString();
                         String str3 = dateView.getText().toString();
@@ -211,16 +221,20 @@ public class MenuFragment extends Fragment {
                                 layoutManager.setOrientation(LinearLayout.VERTICAL);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setLayoutManager(layoutManager);
+
                                 List<Item> items = new ArrayList<>();
                                 Item[] item = new Item[ITEM_SIZE];
-                                item[0] = new Item(R.drawable.korean, "대한항공", "(KAL)", inform[0], strdate, findate);
-                                item[1] = new Item(R.drawable.delta, "델타항공", "(DAL)", inform[1], strdate, findate);
-                                item[2] = new Item(R.drawable.asiana, "아시아나항공", "(AAR)", inform[2], strdate, findate);
-                                item[3] = new Item(R.drawable.jejuair, "제주항공", "(7C)", inform[3], strdate, findate);
-                                item[4] = new Item(R.drawable.airseoul, "에어서울항공", "(RS)", inform[4], strdate, findate);
+                                int airImage[] ={R.drawable.korean,R.drawable.delta,R.drawable.asiana,R.drawable.jejuair,R.drawable.airseoul};
+                                String airName[] = {"대한항공","델타항공","아시아나항공","제주항공","에어서울항공"};
+                                String airMark[] ={"(KAL)","(DAL)","(AAR)","(7C)","(RS)"};
+                                String temp = autoCompleteTextView2.getText().toString();
 
-                                for (int i = 0; i < ITEM_SIZE; i++)
-                                    items.add(item[i]);
+                                for(int i=0; i<inform.length; i++){
+                                    if(temp.equals(inform[i][5])) {
+                                        int random = (int) (Math.random() * 5);
+                                        items.add(new Item(airImage[random], airName[random], airMark[random], inform[i], strdate, findate));
+                                    }
+                                }
 
                                 recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(), items, R.layout.fragment_menu, round));
                             }

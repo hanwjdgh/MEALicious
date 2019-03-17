@@ -51,6 +51,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
 //                    detailFragment.setEnterTransition(TransitionInflater.from(activity).inflateTransition(android.R.transition.fade));
 //                }
                 Bundle bundle = new Bundle();
+                bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.icon.getDrawable()).getBitmap());
                 detailFragment.setArguments(bundle);

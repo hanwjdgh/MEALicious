@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.meal.Activity.ServiceActivity;
@@ -47,16 +48,20 @@ public class DetailFragment extends Fragment {
         Bundle bundle = getArguments();
         Bitmap actionTitle = null;
         Bitmap imageBitmap = null;
-
+        String name = "";
+        int index = -1;
         if (bundle != null) {
             actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
+            name = bundle.getString("NAME");
         }
 
-        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+        final View view = inflater.inflate(R.layout.fragment_detail, container, false);
 
         ((ImageView) view.findViewById(R.id.listImage)).setImageBitmap(imageBitmap);
         ((ImageView) view.findViewById(R.id.textView)).setImageBitmap(actionTitle);
+        ((TextView) view.findViewById(R.id.menuname)).setText(name);
+
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
         button = view.findViewById(R.id.obutton);
@@ -84,6 +89,7 @@ public class DetailFragment extends Fragment {
                     builder.setPositiveButton("예",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(getContext(),((TextView) view.findViewById(R.id.menuname)).getText().toString(),Toast.LENGTH_SHORT).show();
                                     getActivity().finish();
                                     getActivity().overridePendingTransition(0,0);
                                 }
