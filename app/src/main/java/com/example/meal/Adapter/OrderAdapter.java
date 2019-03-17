@@ -60,6 +60,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
                 DetailFragment detailFragment = new DetailFragment();
 
                 Bundle bundle = new Bundle();
+                bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.menu.getDrawable()).getBitmap());
                 detailFragment.setArguments(bundle);
