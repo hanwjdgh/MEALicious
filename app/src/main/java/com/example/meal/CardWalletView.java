@@ -60,7 +60,9 @@ public class CardWalletView extends RelativeLayout {
     }
 
     private void initView() {
-        //inflate(getContext(), R.layout.layout_cards_container, this);
+//        View add = inflate(getContext(), R.layout.layout_cards_container, this);
+//        if(add!=null)
+//            ((ViewGroup) getParent()).removeView(add);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setGravity(Gravity.CENTER);
         setOnClickListener(new View.OnClickListener() {
@@ -79,7 +81,7 @@ public class CardWalletView extends RelativeLayout {
     private void initCardsWallet() {
         if (mCardViews != null) {
             for(int num = mCardViews.size()-1; num>-1; num--) {
-                final View cardView = mCardViews.get(num);
+                final CardView cardView = mCardViews.get(num);
                 cardView.setTag(num);
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -92,9 +94,14 @@ public class CardWalletView extends RelativeLayout {
                         }
                         else{
                             if(cardView.getY()==50) {
-                                Intent intent = new Intent(getContext(), MenuDetailActivity.class);
-                                TodayMenuActivity.mode = 3;
-                                getContext().getApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                cardView.imageButton.setOnClickListener(new OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                                        TodayMenuActivity.mode = 3;
+                                        getContext().getApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                    }
+                                });
                             }
                             else
                                 exitPresentingCardMode();
