@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
             android:orientation="vertical">
 
@@ -51,7 +52,7 @@
                 android:layout_width="500dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="#646464"
                 app:tabIndicatorHeight="5dp"
