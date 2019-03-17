@@ -9,14 +9,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WalletActivity extends AppCompatActivity {
     private CardWalletView mCardWalletView;
-
+    int fimage[] = {R.drawable.asiana_t,R.drawable.korean_t,R.drawable.delta_t,R.drawable.jeju_t};
+    int simage[] = {R.drawable.asiana_t1,R.drawable.korean_t1,R.drawable.delta_t1,R.drawable.jeju_t1};
+    int idx,id;
+    public static List<CardView> cardsViews = new ArrayList<>();
+    RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,24 +32,37 @@ public class WalletActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
-        List<CardView> cardsViews = new ArrayList<>();
-
-        cardsViews.add(new CardView(this, R.drawable.korean_t));
-        cardsViews.add(new CardView(this, R.drawable.delta_t));
-        cardsViews.add(new CardView(this, R.drawable.asiana_t));
-        cardsViews.add(new CardView(this, R.drawable.jeju_t));
+        idx = (int) (Math.random() * 4);
+        while(true) {
+            id = (int) (Math.random() * 4);
+            if(id!=idx)
+                break;
+        }
+        cardsViews.add(new CardView(this, simage[id]));
+        cardsViews.add(new CardView(this, fimage[id]));
+        cardsViews.add(new CardView(this, fimage[idx]));
         mCardWalletView = new CardWalletView(this, cardsViews);
-        ((RelativeLayout) findViewById(R.id.activity_layout)).addView(mCardWalletView);
+        relativeLayout = findViewById(R.id.activity_layout);
+        relativeLayout.addView(mCardWalletView);
     }
 
     @Override
     public void onBackPressed() {
         if (mCardWalletView.isPresentingCards()) {
+            ((ViewGroup)relativeLayout.getParent()).removeView(relativeLayout);
+            ((ViewGroup)mCardWalletView.getParent()).removeView(mCardWalletView);
             mCardWalletView.exitPresentingCardMode();
         } else {
             super.onBackPressed();
             overridePendingTransition(0,0);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ((ViewGroup)relativeLayout.getParent()).removeView(relativeLayout);
+        ((ViewGroup)mCardWalletView.getParent()).removeView(mCardWalletView);
+        super.onDestroy();
     }
 
     @Override

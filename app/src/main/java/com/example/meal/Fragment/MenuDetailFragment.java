@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
+import com.example.meal.Activity.WalletActivity;
 import com.example.meal.Adapter.DetailAdapter;
 import com.example.meal.Adapter.OrderAdapter;
 import com.example.meal.MenuItem;
@@ -94,6 +95,9 @@ public class MenuDetailFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
 
+                                WalletActivity.cardsViews.get(0).setting();
+                                WalletActivity.cardsViews.get(0).setString(item.getMeal());
+                                WalletActivity.cardsViews.get(0).setImage(item.getImage());
                                 ((MenuDetailActivity) getContext()).finish();
                                 ((MenuDetailActivity) getContext()).overridePendingTransition(0, 0);
                                 Toast.makeText(getContext(), item.getMeal(), Toast.LENGTH_SHORT).show();
