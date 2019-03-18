@@ -100,7 +100,6 @@ public class MenuDetailFragment extends Fragment {
                                 WalletActivity.cardsViews.get(0).setImage(item.getImage());
                                 ((MenuDetailActivity) getContext()).finish();
                                 ((MenuDetailActivity) getContext()).overridePendingTransition(0, 0);
-                                Toast.makeText(getContext(), item.getMeal(), Toast.LENGTH_SHORT).show();
 
                             }
                         });

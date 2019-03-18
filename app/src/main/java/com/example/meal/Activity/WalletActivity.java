@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -38,9 +39,10 @@ public class WalletActivity extends AppCompatActivity {
             if(id!=idx)
                 break;
         }
-        cardsViews.add(new CardView(this, simage[id]));
-        cardsViews.add(new CardView(this, fimage[id]));
-        cardsViews.add(new CardView(this, fimage[idx]));
+        cardsViews.add(new CardView(this, simage[id],0));
+        cardsViews.add(new CardView(this, fimage[id],1));
+        cardsViews.add(new CardView(this, fimage[idx],2));
+        Log.e("size",cardsViews.size()+"");
         mCardWalletView = new CardWalletView(this, cardsViews);
         relativeLayout = findViewById(R.id.activity_layout);
         relativeLayout.addView(mCardWalletView);
@@ -49,19 +51,20 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (mCardWalletView.isPresentingCards()) {
-            ((ViewGroup)relativeLayout.getParent()).removeView(relativeLayout);
-            ((ViewGroup)mCardWalletView.getParent()).removeView(mCardWalletView);
             mCardWalletView.exitPresentingCardMode();
+            cardsViews.clear();
         } else {
             super.onBackPressed();
+            ((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
+            cardsViews.clear();
             overridePendingTransition(0,0);
         }
     }
 
     @Override
     protected void onDestroy() {
-        ((ViewGroup)relativeLayout.getParent()).removeView(relativeLayout);
-        ((ViewGroup)mCardWalletView.getParent()).removeView(mCardWalletView);
+//        ((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
+//        cardsViews.clear();
         super.onDestroy();
     }
 

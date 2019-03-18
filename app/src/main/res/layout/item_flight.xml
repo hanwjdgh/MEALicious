@@ -27,25 +27,26 @@
                     android:id="@+id/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp"
+                    android:textColor="#646464"
+                    android:textSize="13dp"
                     android:text="해당 항공편의 메뉴는"/>
                 <TextView
                     android:layout_below="@+id/text"
                     android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp"
+                    android:textColor="#646464"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
                     android:text="생선 크림파스타"/>
                 <TextView
                     android:layout_toRightOf="@+id/text1"
                     android:id="@+id/text2"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#646464"
                     android:textSize="15dp"
                     android:text="입니다."/>
             </RelativeLayout>
@@ -59,14 +60,39 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/blank"/>
-            <ImageView
-                android:id="@+id/order"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/order_b"/>
+
+            <RelativeLayout
+                android:id="@+id/button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/order"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="80dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/order_b"/>
+                <ImageView
+                    android:id="@+id/change"
+                    android:layout_width="125dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="25dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/order_c"/>
+                <ImageView
+                    android:id="@+id/cancel"
+                    android:layout_width="125dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_alignParentRight="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/order_d"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
         <ImageView

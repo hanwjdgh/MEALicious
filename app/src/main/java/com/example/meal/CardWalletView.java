@@ -8,10 +8,12 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.TodayMenuActivity;
@@ -60,9 +62,7 @@ public class CardWalletView extends RelativeLayout {
     }
 
     private void initView() {
-//        View add = inflate(getContext(), R.layout.layout_cards_container, this);
-//        if(add!=null)
-//            ((ViewGroup) getParent()).removeView(add);
+//      inflate(getContext(), R.layout.layout_cards_container, this);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setGravity(Gravity.CENTER);
         setOnClickListener(new View.OnClickListener() {
@@ -93,18 +93,7 @@ public class CardWalletView extends RelativeLayout {
                             translationY.start();
                         }
                         else{
-                            if(cardView.getY()==50) {
-                                cardView.imageButton.setOnClickListener(new OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Intent intent = new Intent(getContext(), MenuDetailActivity.class);
-                                        TodayMenuActivity.mode = 3;
-                                        getContext().getApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                    }
-                                });
-                            }
-                            else
-                                exitPresentingCardMode();
+                            exitPresentingCardMode();
                         }
                     }
                 });
