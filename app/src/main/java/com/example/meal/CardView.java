@@ -1,7 +1,9 @@
 package com.example.meal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -10,18 +12,24 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.meal.Activity.MenuDetailActivity;
+import com.example.meal.Activity.TodayMenuActivity;
+
 public class CardView extends android.support.v7.widget.CardView {
     Context context;
     RelativeLayout relativeLayout;
+    RelativeLayout layout1;
     LinearLayout linearLayout;
     ImageView imageView, blankimage, imageButton;
+    ImageView change, cancel;
     TextView textView;
-    int cardImage;
+    int cardImage, idx;
 
-    public CardView(Context context, int cardIdDrawable) {
+    public CardView(Context context, int cardIdDrawable, int index) {
         super(context);
         this.context = context;
         this.cardImage = cardIdDrawable;
+        this.idx = index;
         init();
     }
 
@@ -46,15 +54,54 @@ public class CardView extends android.support.v7.widget.CardView {
         blankimage = v.findViewById(R.id.blank);
         imageButton = v.findViewById(R.id.order);
         textView = v.findViewById(R.id.text1);
+        layout1 = v.findViewById(R.id.button_layout);
+        change = v.findViewById(R.id.change);
+        cancel = v.findViewById(R.id.cancel);
 
         linearLayout.bringToFront();
         imageView.setImageResource(this.cardImage);
         imageButton.setImageResource(R.drawable.order_b);
+        change.setVisibility(View.GONE);
+        cancel.setVisibility(View.GONE);
         relativeLayout.setVisibility(View.INVISIBLE);
+
+        imageButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(idx==0) {
+                    Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                    TodayMenuActivity.mode = 3;
+                    getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                }
+            }
+        });
+
+        change.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                TodayMenuActivity.mode = 3;
+                getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+
+        cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageButton.setVisibility(View.VISIBLE);
+                change.setVisibility(View.GONE);
+                cancel.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.INVISIBLE);
+                blankimage.setImageResource(R.drawable.blank);
+            }
+        });
     }
 
     public void setting(){
         relativeLayout.setVisibility(View.VISIBLE);
+        change.setVisibility(View.VISIBLE);
+        cancel.setVisibility(View.VISIBLE);
+        imageButton.setVisibility(View.GONE);
     }
 
     public void setString(String str){
