@@ -90,9 +90,11 @@ public class CardWalletView extends RelativeLayout {
                             enterPresentingCardMode();
                             moveDowns();
                             final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 50);
+                            cardView.setHeight(50);
                             translationY.start();
                         }
                         else{
+                            cardView.setHeight(0);
                             exitPresentingCardMode();
                         }
                     }
