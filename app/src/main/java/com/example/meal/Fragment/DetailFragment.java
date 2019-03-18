@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.meal.Activity.SelectActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
 import com.example.meal.Activity.WalletActivity;
@@ -160,24 +162,34 @@ public class DetailFragment extends Fragment {
             }
         });
 
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("About")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Inform")));
-        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("Review")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("메뉴")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("정보")));
+        mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("리뷰")));
 
         mViewpager = view.findViewById(R.id.detailpager);
         mDetailPagerAdapter = new DetailPagerAdapter(getActivity().getSupportFragmentManager(), mTaplayout.getTabCount());
         mViewpager.setOffscreenPageLimit(3);
         mViewpager.setAdapter(mDetailPagerAdapter);
 
+        TextView t = mTaplayout.getTabAt(0).getCustomView().findViewById(R.id.txt_name);
+        t.setTextColor(Color.parseColor("#e9823e"));
+        t.setTypeface(null, Typeface.BOLD);
+
         mViewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTaplayout));
         mTaplayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewpager.setCurrentItem(tab.getPosition());
+                TextView t = mTaplayout.getTabAt(tab.getPosition()).getCustomView().findViewById(R.id.txt_name);
+                t.setTextColor(Color.parseColor("#e9823e"));
+                t.setTypeface(null, Typeface.BOLD);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                TextView t = mTaplayout.getTabAt(tab.getPosition()).getCustomView().findViewById(R.id.txt_name);
+                t.setTextColor(Color.parseColor("#646464"));
+                t.setTypeface(null, Typeface.NORMAL);
 
             }
 
@@ -194,8 +206,9 @@ public class DetailFragment extends Fragment {
         View tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab, null);
         TextView txt_name = tabView.findViewById(R.id.txt_name);
         txt_name.setText(tabName);
-        txt_name.setTextSize(27);
-        txt_name.setTextColor(Color.BLACK);
+        txt_name.setTextSize(25);
+        txt_name.setTextColor(Color.parseColor("#646464"));
+        txt_name.setTypeface(null, Typeface.NORMAL);
         return tabView;
     }
 }
