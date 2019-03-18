@@ -24,6 +24,7 @@
                 android:id="@+id/textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
                 android:src="@drawable/menu_1" />
             <TextView
                 android:id="@+id/name"
@@ -36,11 +37,10 @@
             <ImageView
                 android:layout_below="@+id/textview"
                 android:id="@+id/imageview"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+
                 android:layout_width="600dp"
                 android:layout_height="400dp"
-                android:layout_marginRight="25dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/meal_1" />
             <ImageView
@@ -48,6 +48,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:clickable="true"
+                android:layout_marginRight="23dp"
                 android:layout_alignRight="@+id/imageview"
                 android:src="@drawable/unchecked"/>
         </RelativeLayout>
