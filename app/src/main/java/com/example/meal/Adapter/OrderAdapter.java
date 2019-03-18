@@ -46,7 +46,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(final OrderAdapter.HorizontalViewHolder holder, final int position) {
-        MenuItem data = list.get(position);
+        final MenuItem data = list.get(position);
 
         holder.mealName.setText(data.getMeal());
         holder.description.setImageResource(data.getName());
@@ -64,6 +64,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
                 bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.menu.getDrawable()).getBitmap());
+                bundle.putInt("VIDEO", data.getVideo());
                 detailFragment.setArguments(bundle);
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 fragmentManager.beginTransaction()
