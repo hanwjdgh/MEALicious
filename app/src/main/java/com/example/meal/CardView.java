@@ -1,9 +1,12 @@
 package com.example.meal;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.TodayMenuActivity;
+import com.example.meal.Activity.WalletActivity;
 
 public class CardView extends android.support.v7.widget.CardView {
     Context context;
@@ -23,7 +28,7 @@ public class CardView extends android.support.v7.widget.CardView {
     ImageView imageView, blankimage, imageButton;
     ImageView change, cancel;
     TextView textView;
-    int cardImage, idx;
+    int cardImage, idx, height;
 
     public CardView(Context context, int cardIdDrawable, int index) {
         super(context);
@@ -68,35 +73,57 @@ public class CardView extends android.support.v7.widget.CardView {
         imageButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(idx==0) {
-                    Intent intent = new Intent(getContext(), MenuDetailActivity.class);
-                    TodayMenuActivity.mode = 3;
-                    getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                if (idx == 0) {
+                    if(height==50) {
+                        Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                        TodayMenuActivity.mode = 3;
+                        getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        height=0;
+                    }
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("주문이 불가능 합니다.");
+                    builder.setPositiveButton("예",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                    builder.show();
                 }
             }
         });
 
+
         change.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MenuDetailActivity.class);
-                TodayMenuActivity.mode = 3;
-                getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                if(height==50) {
+                    Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                    TodayMenuActivity.mode = 3;
+                    getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    height=0;
+                }
             }
         });
 
         cancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageButton.setVisibility(View.VISIBLE);
-                change.setVisibility(View.GONE);
-                cancel.setVisibility(View.GONE);
-                relativeLayout.setVisibility(View.INVISIBLE);
-                blankimage.setImageResource(R.drawable.blank);
+                if(height==50) {
+                    imageButton.setVisibility(View.VISIBLE);
+                    change.setVisibility(View.GONE);
+                    cancel.setVisibility(View.GONE);
+                    relativeLayout.setVisibility(View.INVISIBLE);
+                    blankimage.setImageResource(R.drawable.blank);
+                    height=0;
+                }
             }
         });
     }
-
+    public void setHeight(int height){
+        this.height = height;
+    }
     public void setting(){
         relativeLayout.setVisibility(View.VISIBLE);
         change.setVisibility(View.VISIBLE);

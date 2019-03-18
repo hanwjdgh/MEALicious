@@ -27,6 +27,7 @@ import android.widget.VideoView;
 
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
+import com.example.meal.Activity.WalletActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
 import com.example.meal.MenuItem;
 import com.example.meal.R;
@@ -41,7 +42,7 @@ public class DetailFragment extends Fragment {
     Button button;
     ImageView imageView, video, confirm,check_order_image, cancel;
     TextView check_order_name;
-
+    int image[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ public class DetailFragment extends Fragment {
 
         int index = -1;
         if (bundle != null) {
+            index = bundle.getInt("INDEX");
             actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
             name = bundle.getString("NAME");
@@ -71,6 +73,7 @@ public class DetailFragment extends Fragment {
 
         mContext = getActivity().getApplicationContext();
         mTaplayout = view.findViewById(R.id.detailtab);
+        mTaplayout.setSelectedTabIndicator(0);
         button = view.findViewById(R.id.obutton);
         video = view.findViewById(R.id.video);
         imageView = view.findViewById(R.id.select_message);
@@ -89,6 +92,7 @@ public class DetailFragment extends Fragment {
             button.setVisibility(View.VISIBLE);
             final Bitmap finalImageBitmap = imageBitmap;
             final String finalName = name;
+            final int finalIndex = index;
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -108,7 +112,9 @@ public class DetailFragment extends Fragment {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getContext(), ((TextView) view.findViewById(R.id.menuname)).getText().toString(), Toast.LENGTH_SHORT).show();
+                            WalletActivity.cardsViews.get(0).setting();
+                            WalletActivity.cardsViews.get(0).setString(finalName);
+                            WalletActivity.cardsViews.get(0).setImage(image[finalIndex]);
                             getActivity().finish();
                             getActivity().overridePendingTransition(0, 0);
                         }
