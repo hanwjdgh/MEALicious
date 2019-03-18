@@ -64,7 +64,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 //        ((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
-//        cardsViews.clear();
+        cardsViews.clear();
         super.onDestroy();
     }
 
@@ -115,7 +115,11 @@ public class WalletActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+    }
     @Override
     protected void onResume() {
         super.onResume();

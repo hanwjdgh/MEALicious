@@ -188,7 +188,7 @@ public class TodayMenuActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
@@ -218,7 +218,11 @@ public class TodayMenuActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+    }
     @Override
     protected void onResume() {
         super.onResume();
