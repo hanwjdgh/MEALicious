@@ -94,7 +94,6 @@ public class CardWalletView extends RelativeLayout {
                             translationY.start();
                         }
                         else{
-                            cardView.setHeight(0);
                             exitPresentingCardMode();
                         }
                     }
@@ -122,12 +121,13 @@ public class CardWalletView extends RelativeLayout {
     public void tidyCards() {
         if (mCardViewOriginalY == null) {
             mCardViewOriginalY = new ArrayList<>();
-            for (View cardView : mCardViews) {
+            for (CardView cardView : mCardViews) {
                 mCardViewOriginalY.add(cardView.getY());
             }
         }
         for (int i = 0; i < mCardViews.size(); i++) {
-            View cardView = mCardViews.get(i);
+            CardView cardView = mCardViews.get(i);
+            cardView.setHeight(0);
             final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", mCardViewOriginalY.get(i));
             translationY.start();
         }
@@ -136,12 +136,12 @@ public class CardWalletView extends RelativeLayout {
     public void moveDowns(){
         if (mCardViewOriginalY == null) {
             mCardViewOriginalY = new ArrayList<>();
-            for (View cardView : mCardViews) {
+            for (CardView cardView : mCardViews) {
                 mCardViewOriginalY.add(cardView.getY());
             }
         }
         for (int i = 0; i < mCardViews.size(); i++) {
-            View cardView = mCardViews.get(i);
+            CardView cardView = mCardViews.get(i);
             final ObjectAnimator translationY = ObjectAnimator.ofFloat(cardView, "y", 1000-20*i);
             translationY.start();
         }
