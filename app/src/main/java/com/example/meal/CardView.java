@@ -82,7 +82,7 @@ public class CardView extends android.support.v7.widget.CardView {
                 }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage("주문이 불가능 합니다.");
+                    builder.setMessage("항공편 출발 48시간 전까지만 주문이 가능 합니다.");
                     builder.setPositiveButton("예",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
