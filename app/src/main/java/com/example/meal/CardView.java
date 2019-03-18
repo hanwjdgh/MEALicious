@@ -78,7 +78,6 @@ public class CardView extends android.support.v7.widget.CardView {
                         Intent intent = new Intent(getContext(), MenuDetailActivity.class);
                         TodayMenuActivity.mode = 3;
                         getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        height=0;
                     }
                 }
                 else{
@@ -102,7 +101,6 @@ public class CardView extends android.support.v7.widget.CardView {
                     Intent intent = new Intent(getContext(), MenuDetailActivity.class);
                     TodayMenuActivity.mode = 3;
                     getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                    height=0;
                 }
             }
         });
@@ -116,7 +114,6 @@ public class CardView extends android.support.v7.widget.CardView {
                     cancel.setVisibility(View.GONE);
                     relativeLayout.setVisibility(View.INVISIBLE);
                     blankimage.setImageResource(R.drawable.blank);
-                    height=0;
                 }
             }
         });
