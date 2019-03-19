@@ -42,6 +42,7 @@ public class MenuDetailFragment extends Fragment {
     OrderAdapter orderAdapter;
     ImageView confirm, cancel, check_order_image;
     TextView check_order_name;
+    int index;
 
     ArrayList<MenuItem> items;
 
@@ -52,6 +53,9 @@ public class MenuDetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        if (bundle != null)
+            index = bundle.getInt("INDEX");
 
         View view;
         final ArrayList<MenuItem> items = new ArrayList<>();
@@ -94,10 +98,9 @@ public class MenuDetailFragment extends Fragment {
                         confirm.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
-                                WalletActivity.cardsViews.get(0).setting();
-                                WalletActivity.cardsViews.get(0).setString(item.getMeal());
-                                WalletActivity.cardsViews.get(0).setImage(item.getImage());
+                                ServiceActivity.cardsViews.get(index).setting();
+                                ServiceActivity.cardsViews.get(index).setString(item.getMeal());
+                                ServiceActivity.cardsViews.get(index).setImage(item.getImage());
                                 ((MenuDetailActivity) getContext()).finish();
                                 ((MenuDetailActivity) getContext()).overridePendingTransition(0, 0);
 
@@ -132,7 +135,7 @@ public class MenuDetailFragment extends Fragment {
             recyclerView.setAdapter(detailAdapter);
         } else {
             orderAdapter = new OrderAdapter();
-            orderAdapter.setData(getActivity().getApplicationContext(), items);
+            orderAdapter.setData(getActivity().getApplicationContext(), items,index);
             recyclerView.setAdapter(orderAdapter);
         }
         return view;

@@ -15,12 +15,15 @@ public class MenuDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
+        int idx = getIntent().getIntExtra("INDEX",0);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
         MenuDetailFragment menuDetailFragment = new MenuDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("INDEX",idx);
+        menuDetailFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, menuDetailFragment).commit();
 
     }
