@@ -115,8 +115,6 @@ public class OrderFragment extends Fragment {
                     Toast.makeText(getContext(), "개인 정보 및 수집 이용에 동의해주셔야 합니다", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getActivity(), WalletActivity.class);
-
-//                    intent.putExtra("passport",editText.getText().toString());
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 }
             }

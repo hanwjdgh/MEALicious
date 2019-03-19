@@ -62,7 +62,6 @@ public class MenuFragment extends Fragment {
     CollapsingToolbarLayout collapsingToolbarLayout;
     Toolbar toolbar;
     int round = 1;
-    final int ITEM_SIZE = 5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -210,10 +209,10 @@ public class MenuFragment extends Fragment {
                         appbarLayout.setExpanded(false);
                         if (str.length() > 0 && str2.length() > 0) {
                             if (str4.equals("")) {
-                                textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일");
+                                textView.setText(str + " → " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일");
 
                             } else {
-                                textView.setText(str + " - " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
+                                textView.setText(str + " → " + str2 + "   " + str3.substring(5, 7) + "월 " + str3.substring(8, 10) + "일" + " ~ " + str4.substring(5, 7) + "월 " + str4.substring(8, 10) + "일");
                             }
 
                             if (round != 0) {

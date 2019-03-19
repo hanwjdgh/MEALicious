@@ -20,7 +20,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TreeMap;
 
 public class TodayMenuActivity extends AppCompatActivity {
     RelativeLayout linearLayout1, relativeLayout2;
@@ -294,8 +293,6 @@ public class TodayMenuActivity extends AppCompatActivity {
             }
             if(i==0)
                 route += " → ";
-//            else
-//                route +="행";
         }
         return route;
     }

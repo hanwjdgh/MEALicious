@@ -3,7 +3,6 @@ package com.example.meal.Fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +21,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.example.meal.Activity.SelectActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
-import com.example.meal.Activity.WalletActivity;
 import com.example.meal.Adapter.DetailPagerAdapter;
-import com.example.meal.MenuItem;
 import com.example.meal.R;
 
-import java.util.ArrayList;
 
 public class DetailFragment extends Fragment {
     private Context mContext;
@@ -170,7 +163,7 @@ public class DetailFragment extends Fragment {
         mTaplayout.addTab(mTaplayout.newTab().setCustomView(createTabView("리뷰")));
 
         mViewpager = view.findViewById(R.id.detailpager);
-        mDetailPagerAdapter = new DetailPagerAdapter(getActivity().getSupportFragmentManager(), mTaplayout.getTabCount());
+        mDetailPagerAdapter = new DetailPagerAdapter(getActivity().getSupportFragmentManager(), mTaplayout.getTabCount(), index);
         mViewpager.setOffscreenPageLimit(3);
         mViewpager.setAdapter(mDetailPagerAdapter);
 

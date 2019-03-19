@@ -1,15 +1,11 @@
 package com.example.meal.Adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,9 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Fragment.DetailFragment;
-import com.example.meal.Item;
 import com.example.meal.MenuItem;
 import com.example.meal.R;
 
@@ -29,7 +23,6 @@ import java.util.ArrayList;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalViewHolder>{
     private ArrayList<MenuItem> list;
     Context context;
-    int i = 0;
     public int selectedPosition  = 0;
     int index;
 

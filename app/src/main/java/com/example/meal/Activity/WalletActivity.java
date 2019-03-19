@@ -7,15 +7,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WalletActivity extends AppCompatActivity {
     int fimage[] = {R.drawable.asiana_t,R.drawable.korean_t,R.drawable.delta_t,R.drawable.jeju_t};
@@ -53,19 +48,15 @@ public class WalletActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (ServiceActivity.mCardWalletView.isPresentingCards()) {
             ServiceActivity.mCardWalletView.exitPresentingCardMode();
-            //cardsViews.clear();
         } else {
             super.onBackPressed();
             ((ViewGroup) ServiceActivity.mCardWalletView.getParent()).removeView(ServiceActivity.mCardWalletView);
-            //cardsViews.clear();
             overridePendingTransition(0,0);
         }
     }
 
     @Override
     protected void onDestroy() {
-        //((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
-        //cardsViews.clear();
         super.onDestroy();
     }
 

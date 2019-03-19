@@ -1,27 +1,22 @@
 package com.example.meal.Fragment;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.Activity.TodayMenuActivity;
-import com.example.meal.Activity.WalletActivity;
 import com.example.meal.Adapter.DetailAdapter;
 import com.example.meal.Adapter.OrderAdapter;
 import com.example.meal.MenuItem;
@@ -43,8 +38,6 @@ public class MenuDetailFragment extends Fragment {
     ImageView confirm, cancel, check_order_image;
     TextView check_order_name;
     int index;
-
-    ArrayList<MenuItem> items;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
