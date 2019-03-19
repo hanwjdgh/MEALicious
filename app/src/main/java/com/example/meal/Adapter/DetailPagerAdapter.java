@@ -1,5 +1,6 @@
 package com.example.meal.Adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,19 +11,29 @@ import com.example.meal.Fragment.ReviewFragment;
 
 public class DetailPagerAdapter extends FragmentStatePagerAdapter {
     private int mPageCount;
+    int index;
 
-    public DetailPagerAdapter(FragmentManager fm, int pageCount) {
+    public DetailPagerAdapter(FragmentManager fm, int pageCount, int point) {
         super(fm);
         this.mPageCount = pageCount;
+        this.index = point;
     }
 
     @Override
     public Fragment getItem(int i) {
         switch (i) {
             case 0:
-                return new AboutFragment();
+                AboutFragment aboutFragment = new AboutFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("INDEX",index);
+                aboutFragment.setArguments(bundle);
+                return aboutFragment;
             case 1:
-                return new InformFragment();
+                InformFragment informFragment = new InformFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("INDEX",index);
+                informFragment.setArguments(bundle1);
+                return informFragment;
             case 2:
                 return new ReviewFragment();
             default:

@@ -1,24 +1,13 @@
 package com.example.meal.Fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
-import com.example.meal.Activity.MainActivity;
 import com.example.meal.Activity.ServiceActivity;
 import com.example.meal.R;
 

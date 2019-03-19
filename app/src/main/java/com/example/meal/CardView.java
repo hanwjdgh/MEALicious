@@ -1,24 +1,19 @@
 package com.example.meal;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.meal.Activity.MenuDetailActivity;
 import com.example.meal.Activity.TodayMenuActivity;
-import com.example.meal.Activity.WalletActivity;
 
 public class CardView extends android.support.v7.widget.CardView {
     Context context;
@@ -140,8 +135,5 @@ public class CardView extends android.support.v7.widget.CardView {
         blankimage.setImageResource(image);
         blankimage.setScaleType(ImageView.ScaleType.FIT_XY);
         blankimage.setAdjustViewBounds(true);
-    }
-    public int getIndex(){
-        return this.idx;
     }
 }

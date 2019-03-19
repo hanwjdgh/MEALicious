@@ -54,7 +54,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
             f = localDate.getDayOfMonth();
 
             if (year > d || month > e || day > f) {
-                Log.e("dd", "dd");
                 ((FloatingActionButton) getActivity().findViewById(R.id.fab)).setClickable(false);
                 Toast.makeText(getContext(), "돌아오는 날짜를 다시 확인해주세요.", Toast.LENGTH_LONG).show();
             } else {
