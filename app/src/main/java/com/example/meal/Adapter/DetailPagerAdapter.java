@@ -35,7 +35,11 @@ public class DetailPagerAdapter extends FragmentStatePagerAdapter {
                 informFragment.setArguments(bundle1);
                 return informFragment;
             case 2:
-                return new ReviewFragment();
+                ReviewFragment reviewFragment = new ReviewFragment();
+                Bundle bundle2 = new Bundle();
+                bundle2.putInt("INDEX",index);
+                reviewFragment.setArguments(bundle2);
+                return reviewFragment;
             default:
                 return null;
         }
