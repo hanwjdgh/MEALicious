@@ -18,11 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WalletActivity extends AppCompatActivity {
-    private CardWalletView mCardWalletView;
     int fimage[] = {R.drawable.asiana_t,R.drawable.korean_t,R.drawable.delta_t,R.drawable.jeju_t};
     int simage[] = {R.drawable.asiana_t1,R.drawable.korean_t1,R.drawable.delta_t1,R.drawable.jeju_t1};
     int idx,id;
-    public static List<CardView> cardsViews = new ArrayList<>();
     RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +31,41 @@ public class WalletActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_name);
 
-        idx = (int) (Math.random() * 4);
-        while(true) {
-            id = (int) (Math.random() * 4);
-            if(id!=idx)
-                break;
+        if(ServiceActivity.cardsViews.size()==0) {
+            idx = (int) (Math.random() * 4);
+            while (true) {
+                id = (int) (Math.random() * 4);
+                if (id != idx)
+                    break;
+            }
+            ServiceActivity.cardsViews.add(new CardView(this, simage[idx], 0,"back"));
+            ServiceActivity.cardsViews.add(new CardView(this, simage[id], 1,"back"));
+            ServiceActivity.cardsViews.add(new CardView(this, fimage[id], 2,"go"));
+            ServiceActivity.cardsViews.add(new CardView(this, fimage[idx], 3,"go"));
+            ServiceActivity.mCardWalletView = new CardWalletView(this, ServiceActivity.cardsViews);
         }
-        cardsViews.add(new CardView(this, simage[id],0));
-        cardsViews.add(new CardView(this, fimage[id],1));
-        cardsViews.add(new CardView(this, fimage[idx],2));
-        Log.e("size",cardsViews.size()+"");
-        mCardWalletView = new CardWalletView(this, cardsViews);
+
         relativeLayout = findViewById(R.id.activity_layout);
-        relativeLayout.addView(mCardWalletView);
+        relativeLayout.addView(ServiceActivity.mCardWalletView);
     }
 
     @Override
     public void onBackPressed() {
-        if (mCardWalletView.isPresentingCards()) {
-            mCardWalletView.exitPresentingCardMode();
-            cardsViews.clear();
+        if (ServiceActivity.mCardWalletView.isPresentingCards()) {
+            ServiceActivity.mCardWalletView.exitPresentingCardMode();
+            //cardsViews.clear();
         } else {
             super.onBackPressed();
-            ((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
-            cardsViews.clear();
+            ((ViewGroup) ServiceActivity.mCardWalletView.getParent()).removeView(ServiceActivity.mCardWalletView);
+            //cardsViews.clear();
             overridePendingTransition(0,0);
         }
     }
 
     @Override
     protected void onDestroy() {
-//        ((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
-        cardsViews.clear();
+        //((ViewGroup) mCardWalletView.getParent()).removeView(mCardWalletView);
+        //cardsViews.clear();
         super.onDestroy();
     }
 

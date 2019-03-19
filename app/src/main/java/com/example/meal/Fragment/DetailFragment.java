@@ -45,6 +45,8 @@ public class DetailFragment extends Fragment {
     ImageView imageView, video, confirm,check_order_image, cancel;
     TextView check_order_name;
     int image[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
+    int point;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class DetailFragment extends Fragment {
 
         int index = -1;
         if (bundle != null) {
+            point = bundle.getInt("TICKET");
             index = bundle.getInt("INDEX");
             actionTitle = bundle.getParcelable("ACTION");
             imageBitmap = bundle.getParcelable("IMAGE");
@@ -114,9 +117,9 @@ public class DetailFragment extends Fragment {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            WalletActivity.cardsViews.get(0).setting();
-                            WalletActivity.cardsViews.get(0).setString(finalName);
-                            WalletActivity.cardsViews.get(0).setImage(image[finalIndex]);
+                            ServiceActivity.cardsViews.get(point).setting();
+                            ServiceActivity.cardsViews.get(point).setString(finalName);
+                            ServiceActivity.cardsViews.get(point).setImage(image[finalIndex]);
                             getActivity().finish();
                             getActivity().overridePendingTransition(0, 0);
                         }
