@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
+        android:id="@+id/review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Review"
-        android:textSize="100sp" />
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/about_tab" />
 
 </RelativeLayout>
