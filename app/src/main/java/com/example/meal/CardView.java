@@ -29,12 +29,14 @@ public class CardView extends android.support.v7.widget.CardView {
     ImageView change, cancel;
     TextView textView;
     int cardImage, idx, height;
+    String str;
 
-    public CardView(Context context, int cardIdDrawable, int index) {
+    public CardView(Context context, int cardIdDrawable, int index, String mode) {
         super(context);
         this.context = context;
         this.cardImage = cardIdDrawable;
         this.idx = index;
+        this.str = mode;
         init();
     }
 
@@ -73,9 +75,10 @@ public class CardView extends android.support.v7.widget.CardView {
         imageButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (idx == 0) {
+                if (str.equals("back")) {
                     if(height==50) {
                         Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                        intent.putExtra("INDEX",idx);
                         TodayMenuActivity.mode = 3;
                         getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     }
@@ -99,6 +102,7 @@ public class CardView extends android.support.v7.widget.CardView {
             public void onClick(View v) {
                 if(height==50) {
                     Intent intent = new Intent(getContext(), MenuDetailActivity.class);
+                    intent.putExtra("INDEX",idx);
                     TodayMenuActivity.mode = 3;
                     getContext().getApplicationContext().startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 }
@@ -136,5 +140,8 @@ public class CardView extends android.support.v7.widget.CardView {
         blankimage.setImageResource(image);
         blankimage.setScaleType(ImageView.ScaleType.FIT_XY);
         blankimage.setAdjustViewBounds(true);
+    }
+    public int getIndex(){
+        return this.idx;
     }
 }

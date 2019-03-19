@@ -16,7 +16,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.meal.Adapter.ContentsPagerAdapter;
+import com.example.meal.CardView;
+import com.example.meal.CardWalletView;
 import com.example.meal.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceActivity extends AppCompatActivity {
     public static String menu_title[]={"한국어","English","汉语","日本語"};
@@ -24,6 +29,8 @@ public class ServiceActivity extends AppCompatActivity {
     public static int check_lan = 0;
     public static ViewPager mViewPager;
     public static  ContentsPagerAdapter mContentPagerAdapter;
+    public static List<CardView> cardsViews = new ArrayList<>();
+    public static CardWalletView mCardWalletView;
     TabLayout mTaplayout;
 
     @Override
@@ -104,6 +111,7 @@ public class ServiceActivity extends AppCompatActivity {
         item.setChecked(true);
         switch (item.getItemId()){
             case android.R.id.home:
+                cardsViews.clear();
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);;
                 startActivity(homeIntent);
@@ -150,6 +158,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
+        cardsViews.clear();
         super.onBackPressed();
         overridePendingTransition(0,0);
     }

@@ -31,10 +31,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
     Context context;
     int i = 0;
     public int selectedPosition  = 0;
+    int index;
 
-    public void setData(Context context, ArrayList<MenuItem> lst){
+    public void setData(Context context, ArrayList<MenuItem> lst, int idx){
         this.context = context;
         this.list = lst;
+        this.index = idx;
     }
     @Override
     public OrderAdapter.HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int i) {
@@ -60,6 +62,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HorizontalVi
                 DetailFragment detailFragment = new DetailFragment();
 
                 Bundle bundle = new Bundle();
+                bundle.putInt("TICKET",index);
                 bundle.putInt("INDEX",position);
                 bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
