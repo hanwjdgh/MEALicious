@@ -66,7 +66,7 @@
                 android:layout_width="500dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="82dp"
 
                 app:tabBackground="@drawable/select_tab"
                 app:tabGravity="fill"
@@ -77,7 +77,7 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/detailpager"
                 android:layout_width="640dp"
-                android:layout_height="447dp"
+                android:layout_height="410dp"
                 android:background="@drawable/circle3"
                 android:layout_marginLeft="10dp" />
 
