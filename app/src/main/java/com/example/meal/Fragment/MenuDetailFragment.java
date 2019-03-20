@@ -31,7 +31,7 @@ public class MenuDetailFragment extends Fragment {
     MenuItem item;
     int menuname[] = {R.drawable.menu_1, R.drawable.menu_2, R.drawable.menu_3};
     int Images[] = {R.drawable.meal_1, R.drawable.meal_2, R.drawable.meal_3};
-    int videos[] = {R.raw.roast, R.raw.slice, R.raw.roast};
+    int videos[] = {R.raw.roast, R.raw.pasta, R.raw.slice};
     String meals[] = {"낙지 덮밥", "생선 크림 파스타", "흰 쌀죽"};
     DetailAdapter detailAdapter;
     OrderAdapter orderAdapter;
