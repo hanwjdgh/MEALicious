@@ -124,7 +124,7 @@ public class MenuDetailFragment extends Fragment {
         if (TodayMenuActivity.mode != 3) {
             detailAdapter = new DetailAdapter();
 
-            detailAdapter.setData(getActivity().getApplicationContext(), items);
+            detailAdapter.setData(getActivity().getApplicationContext(), items, index);
             recyclerView.setAdapter(detailAdapter);
         } else {
             orderAdapter = new OrderAdapter();

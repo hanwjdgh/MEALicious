@@ -12,9 +12,9 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="450dp"
-        android:layout_height="340dp"
+        android:layout_height="310dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="230dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarFadeDuration="0"
         android:scrollbarSize="2dp">
