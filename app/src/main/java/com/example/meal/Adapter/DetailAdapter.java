@@ -22,10 +22,12 @@ import java.util.ArrayList;
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.HorizontalViewHolder> {
     private ArrayList<MenuItem> list;
     Context context;
+    int index;
 
-    public void setData(Context context, ArrayList<MenuItem> lst){
+    public void setData(Context context, ArrayList<MenuItem> lst, int idx){
         this.context = context;
         this.list = lst;
+        this.index = idx;
     }
     @Override
     public HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int i) {
@@ -35,7 +37,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
     }
 
     @Override
-    public void onBindViewHolder(final HorizontalViewHolder holder, int position) {
+    public void onBindViewHolder(final HorizontalViewHolder holder, final int position) {
         final MenuItem data = list.get(position);
 
         holder.description.setImageResource(data.getName());
@@ -51,6 +53,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.Horizontal
 //                    detailFragment.setEnterTransition(TransitionInflater.from(activity).inflateTransition(android.R.transition.fade));
 //                }
                 Bundle bundle = new Bundle();
+                bundle.putInt("INDEX", position);
                 bundle.putString("NAME",holder.mealName.getText().toString());
                 bundle.putParcelable("ACTION", ((BitmapDrawable) holder.description.getDrawable()).getBitmap());
                 bundle.putParcelable("IMAGE", ((BitmapDrawable) holder.icon.getDrawable()).getBitmap());
