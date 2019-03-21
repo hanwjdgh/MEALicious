@@ -69,6 +69,7 @@
                 android:background="@android:color/transparent"
                 android:completionThreshold="1"
                 android:text="인천"
+                android:privateImeOptions="defaultInputmode=korean;symbol=false"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textSize="25sp" />
@@ -79,10 +80,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="766dp"
                 android:layout_marginTop="285dp"
+                android:text="뉴욕"
                 android:background="@android:color/transparent"
                 android:completionThreshold="1"
                 android:gravity="center"
-
+                android:privateImeOptions="defaultInputmode=korean;symbol=false"
                 android:textColor="#000000"
                 android:textSize="25sp" />
 

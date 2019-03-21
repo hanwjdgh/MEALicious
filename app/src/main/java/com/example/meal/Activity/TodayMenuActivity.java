@@ -188,6 +188,7 @@ public class TodayMenuActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                ServiceActivity.cardsViews.clear();
                 startActivity(homeIntent);
                 return true;
             case R.id.lag:
