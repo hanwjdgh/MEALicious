@@ -91,7 +91,7 @@
         android:gravity="center"
         android:hint="여권번호를 입력해주세요"
         android:src="@drawable/passport_id"
-        android:privateImeOptions="defaultInputmode=english"
+        android:privateImeOptions="defaultInputmode=english;symbol=false"
         android:textSize="30sp" />
 
     <ImageView
